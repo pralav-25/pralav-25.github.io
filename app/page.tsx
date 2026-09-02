@@ -1,5 +1,6 @@
-import { ArrowDownRight, ArrowUpRight, Code2, Film, GitBranch, Mail, Play, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Code2, Film, GitBranch, Mail, ShieldCheck, Sparkles } from 'lucide-react';
 import Image from 'next/image';
+import { EditingGallery } from '@/components/editing-gallery';
 
 const projects = [
   {
@@ -49,49 +50,6 @@ const disciplines = [
 ];
 
 const ticker = ['React', 'TypeScript', 'FastAPI', 'Creative code', 'DaVinci Resolve'];
-
-const editingSamples = [
-  {
-    title: 'RB22 / Max Verstappen',
-    platform: 'YouTube Short',
-    credit: 'Sinister_editzz',
-    type: 'Original edit',
-    image: '/edit-redbull.jpg',
-    href: 'https://youtube.com/shorts/U3FacqdL5e4?si=dqF3v6OrqkRdXx6P',
-  },
-  {
-    title: 'Why Do We Fall?',
-    platform: 'YouTube Short',
-    credit: 'Sinister_editzz',
-    type: 'Original edit',
-    image: '/edit-hamilton.jpg',
-    href: 'https://youtube.com/shorts/-NPh8XWfVhY?si=AZsTUYExE8RcL1mn',
-  },
-  {
-    title: 'Max the Verstappen',
-    platform: 'YouTube Short',
-    credit: 'Sinister_editzz',
-    type: 'Original edit',
-    image: '/edit-verstappen.jpg',
-    href: 'https://youtube.com/shorts/S1RUcgtZc8c?si=kQK73olN7kivBhNv',
-  },
-  {
-    title: 'Iron Man / Poster Boy',
-    platform: 'YouTube Short',
-    credit: 'Sinister_editzz',
-    type: 'Original edit',
-    image: '/edit-ironman.jpg',
-    href: 'https://youtube.com/shorts/7zNr4y9W338?si=xp51ZCdVGgW1KuFt',
-  },
-  {
-    title: 'Accuracy',
-    platform: 'Instagram',
-    credit: 'Executor',
-    type: 'Editing reference',
-    image: '/edit-reference-instagram.jpg',
-    href: 'https://www.instagram.com/p/DUlD3i5k2Z6/',
-  },
-];
 
 export default function Home() {
   return (
@@ -184,20 +142,7 @@ export default function Home() {
           <p>Short-form edits published by Sinister_editzz, plus one clearly credited Instagram reference.</p>
         </div>
 
-        <div className="editing-grid">
-          {editingSamples.map((sample, index) => (
-            <a className="editing-card" href={sample.href} target="_blank" rel="noreferrer" key={sample.href} aria-label={`Watch ${sample.title} on ${sample.platform}`}>
-              <span className="editing-media" style={{ position: 'relative' }}>
-                <Image src={sample.image} alt={`${sample.title} editing preview`} fill sizes="(max-width: 760px) 76vw, (max-width: 1120px) 33vw, 20vw" />
-                <span className="editing-number">0{index + 1}</span>
-                <span className="editing-play"><Play aria-hidden="true" /></span>
-              </span>
-              <span className="editing-meta"><span>{sample.type}</span><span>{sample.platform}</span></span>
-              <strong>{sample.title}</strong>
-              <small>Credit · {sample.credit} <ArrowUpRight aria-hidden="true" /></small>
-            </a>
-          ))}
-        </div>
+        <EditingGallery />
       </section>
 
       <section className="about" id="about" aria-labelledby="about-title">
