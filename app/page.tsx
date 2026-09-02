@@ -1,6 +1,7 @@
 import { ArrowDownRight, ArrowUpRight, Code2, Film, GitBranch, Mail, ShieldCheck, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import { EditingGallery } from '@/components/editing-gallery';
+import { ScrollMotion } from '@/components/scroll-motion';
 
 const projects = [
   {
@@ -54,6 +55,7 @@ const ticker = ['React', 'TypeScript', 'FastAPI', 'Creative code', 'DaVinci Reso
 export default function Home() {
   return (
     <main>
+      <ScrollMotion />
       <section className="hero" id="top" aria-labelledby="hero-title">
         <header className="site-header">
           <a className="brand" href="#top" aria-label="Pralav Singh, home">PRALAV<sup>25</sup></a>
@@ -85,7 +87,7 @@ export default function Home() {
           <Image src="https://avatars.githubusercontent.com/u/174412353?v=4" alt="" width={220} height={220} priority />
         </div>
 
-        <div className="hero-center">
+        <div className="hero-center" data-scroll-scene>
           <p className="hero-kicker">A developer &amp; creative portfolio by Pralav Singh</p>
           <h1 id="hero-title">
             <span>Developer</span>
@@ -107,15 +109,15 @@ export default function Home() {
 
       <section className="work" id="work" aria-labelledby="work-title">
         <div className="work-heading">
-          <p>Selected work · 2025—2026</p>
-          <h2 id="work-title">Come for the craft.<br />Stay for the thinking.</h2>
-          <a href="https://github.com/pralav-25?tab=repositories" target="_blank" rel="noreferrer">View all repositories <ArrowUpRight aria-hidden="true" /></a>
+          <p data-reveal="up">Selected work · 2025—2026</p>
+          <h2 className="motion-lines" id="work-title" data-reveal="lines"><span>Come for the craft.</span><span>Stay for the thinking.</span></h2>
+          <a data-reveal="up" href="https://github.com/pralav-25?tab=repositories" target="_blank" rel="noreferrer">View all repositories <ArrowUpRight aria-hidden="true" /></a>
         </div>
 
         <div className="project-grid">
           {projects.map((project) => (
-            <article className="project-card" key={project.name}>
-              <a className="project-media" href={project.live ?? project.source} target="_blank" rel="noreferrer" aria-label={`Open ${project.name}`}>
+            <article className="project-card" data-reveal="card" key={project.name}>
+              <a className="project-media" data-scroll-scene href={project.live ?? project.source} target="_blank" rel="noreferrer" aria-label={`Open ${project.name}`}>
                 <Image src={project.image} alt={`${project.name} project preview`} fill sizes="(max-width: 760px) 100vw, 50vw" />
                 <span>{project.number}</span>
               </a>
@@ -137,24 +139,24 @@ export default function Home() {
 
       <section className="editing-work" id="editing" aria-labelledby="editing-title">
         <div className="editing-heading">
-          <p>Editing samples · 04 original cuts</p>
-          <h2 id="editing-title">Motion, pace,<br />and storytelling.</h2>
-          <p>Short-form edits published by Sinister_editzz, plus one clearly credited Instagram reference.</p>
+          <p data-reveal="up">Editing samples · 04 original cuts</p>
+          <h2 className="motion-lines" id="editing-title" data-reveal="lines"><span>Motion, pace,</span><span>and storytelling.</span></h2>
+          <p data-reveal="up">Short-form edits published by Sinister_editzz, plus one clearly credited Instagram reference.</p>
         </div>
 
         <EditingGallery />
       </section>
 
       <section className="about" id="about" aria-labelledby="about-title">
-        <div className="about-portrait">
+        <div className="about-portrait" data-reveal="left" data-scroll-scene>
           <Image src="https://avatars.githubusercontent.com/u/174412353?v=4" alt="Pralav Singh" width={640} height={640} />
           <span>India · 20.59° N / 78.96° E</span>
         </div>
         <div className="about-copy">
-          <p className="section-label">A little about me</p>
-          <h2 id="about-title">I care about how things work—and how they feel.</h2>
-          <p>I&apos;m Pralav, a developer and video editor based in India. I move between engineering, interface design, API security, and visual storytelling to turn practical ideas into clear experiences.</p>
-          <dl>
+          <p className="section-label" data-reveal="up">A little about me</p>
+          <h2 className="motion-lines" id="about-title" data-reveal="lines"><span>I care about how things work—</span><span>and how they feel.</span></h2>
+          <p data-reveal="up">I&apos;m Pralav, a developer and video editor based in India. I move between engineering, interface design, API security, and visual storytelling to turn practical ideas into clear experiences.</p>
+          <dl data-reveal="up">
             <div><dt>13</dt><dd>Public repositories</dd></div>
             <div><dt>2</dt><dd>Creative disciplines</dd></div>
             <div><dt>∞</dt><dd>Curiosity</dd></div>
@@ -164,12 +166,12 @@ export default function Home() {
 
       <section className="skills" id="skills" aria-labelledby="skills-title">
         <div className="skills-heading">
-          <p className="section-label">How I make things</p>
-          <h2 id="skills-title">Useful. Legible.<br />Considered.</h2>
+          <p className="section-label" data-reveal="up">How I make things</p>
+          <h2 className="motion-lines" id="skills-title" data-reveal="lines"><span>Useful. Legible.</span><span>Considered.</span></h2>
         </div>
         <div className="discipline-list">
           {disciplines.map(({ icon: Icon, label, copy }, index) => (
-            <article key={label}>
+            <article data-reveal="row" key={label}>
               <span className="discipline-number">0{index + 1}</span>
               <Icon aria-hidden="true" />
               <h3>{label}</h3>
@@ -179,10 +181,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contact" id="contact" aria-labelledby="contact-title">
-        <p>Let&apos;s make something that earns attention.</p>
-        <h2 id="contact-title">Have an internship,<br />project, or idea?</h2>
-        <div>
+      <section className="contact" id="contact" aria-labelledby="contact-title" data-scroll-scene>
+        <p data-reveal="up">Let&apos;s make something that earns attention.</p>
+        <h2 className="motion-lines" id="contact-title" data-reveal="lines"><span>Have an internship,</span><span>project, or idea?</span></h2>
+        <div data-reveal="up">
           <a href="mailto:singhpralav07@gmail.com"><Mail aria-hidden="true" /> Email me</a>
           <a href="https://github.com/pralav-25" target="_blank" rel="noreferrer"><GitBranch aria-hidden="true" /> Follow the work</a>
         </div>
