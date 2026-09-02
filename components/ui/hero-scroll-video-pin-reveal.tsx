@@ -7,6 +7,7 @@ export interface HeroScrollVideoRevealProps {
   heading?: string;
   tags?: string[];
   videoSrc?: string;
+  mobileVideoSrc?: string;
   title?: string;
   credit?: string;
 }
@@ -18,6 +19,7 @@ export default function HeroScrollVideoReveal({
   heading = 'A cut should feel inevitable.',
   tags = ['Story-led', 'Beat-synced', 'Short-form'],
   videoSrc = '/rb22.mp4',
+  mobileVideoSrc = '/rb22-mobile.mp4',
   title = 'Motion with purpose.',
   credit = 'Original edit · Sinister_editzz',
 }: HeroScrollVideoRevealProps) {
@@ -30,7 +32,6 @@ export default function HeroScrollVideoReveal({
     if (!section || !video) return;
 
     const hydrateAndPlay = () => {
-      if (!video.src) video.src = videoSrc;
       video.play().catch(() => {});
     };
     const videoObserver = new IntersectionObserver(
@@ -74,7 +75,7 @@ export default function HeroScrollVideoReveal({
       window.removeEventListener('resize', requestUpdate);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, [videoSrc]);
+  }, []);
 
   return (
     <section className="reel-reveal" id="editing" ref={sectionRef} aria-labelledby="reel-reveal-title">
@@ -90,7 +91,10 @@ export default function HeroScrollVideoReveal({
         <div className="reel-reveal-window" aria-hidden="true">
           <div className="reel-reveal-backdrop" />
           <div className="reel-reveal-frame">
-            <video ref={videoRef} autoPlay muted loop playsInline preload="metadata" poster="/edit-redbull.jpg" />
+            <video ref={videoRef} autoPlay muted loop playsInline preload="none" poster="/edit-redbull.jpg">
+              <source src={mobileVideoSrc} media="(max-width: 760px)" type="video/mp4" />
+              <source src={videoSrc} type="video/mp4" />
+            </video>
           </div>
           <div className="reel-reveal-shade" />
         </div>

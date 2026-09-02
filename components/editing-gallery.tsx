@@ -56,7 +56,7 @@ export function EditingGallery() {
         const isActive = activeIndex === index;
 
         return (
-          <article className={`editing-card${isActive ? ' is-playing' : ''}`} data-reveal="card" key={sample.embed}>
+          <article className={`editing-card${sample.platform === 'Instagram' ? ' is-reference' : ''}${isActive ? ' is-playing' : ''}`} data-reveal="card" key={sample.embed}>
             <div className="editing-media" data-scroll-scene>
               {isActive ? (
                 <iframe
