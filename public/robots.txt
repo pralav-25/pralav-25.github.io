@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pralav-25.github.io/sitemap.xml
+Sitemap: https://pralav-singh-portfolio.vercel.app/sitemap.xml

@@ -3,7 +3,7 @@
 A recruiter-focused portfolio presenting selected software projects, technical
 capabilities, and creative work with direct links to source code and live demos.
 
-**Live site:** [pralav-25.github.io](https://pralav-25.github.io)
+**Live site:** [pralav-singh-portfolio.vercel.app](https://pralav-singh-portfolio.vercel.app)
 
 ## What this project demonstrates
 

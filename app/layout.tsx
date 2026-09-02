@@ -6,7 +6,7 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://pralav-25.github.io'),
+  metadataBase: new URL('https://pralav-singh-portfolio.vercel.app'),
   title: 'Pralav Singh — Developer & Creative Technologist',
   description: 'Portfolio of Pralav Singh: responsive web products, interactive prototypes, API security concepts, and visual storytelling.',
   authors: [{ name: 'Pralav Singh', url: 'https://github.com/pralav-25' }],
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Pralav Singh — Developer & Creative Technologist',
     description: 'Engineering clear digital products across web development, prototypes, security, and visual storytelling.',
-    url: 'https://pralav-25.github.io',
+    url: 'https://pralav-singh-portfolio.vercel.app',
     siteName: 'Pralav Singh',
     type: 'website',
     images: [{ url: '/og.png', width: 1730, height: 909, alt: 'Pralav Singh — Developer & Creative Technologist' }],
