@@ -187,7 +187,7 @@ export default function Home() {
         <div className="editing-grid">
           {editingSamples.map((sample, index) => (
             <a className="editing-card" href={sample.href} target="_blank" rel="noreferrer" key={sample.href} aria-label={`Watch ${sample.title} on ${sample.platform}`}>
-              <span className="editing-media">
+              <span className="editing-media" style={{ position: 'relative' }}>
                 <Image src={sample.image} alt={`${sample.title} editing preview`} fill sizes="(max-width: 760px) 76vw, (max-width: 1120px) 33vw, 20vw" />
                 <span className="editing-number">0{index + 1}</span>
                 <span className="editing-play"><Play aria-hidden="true" /></span>
