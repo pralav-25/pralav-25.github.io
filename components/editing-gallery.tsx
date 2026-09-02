@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Play, X } from 'lucide-react';
 import Image from 'next/image';
 
@@ -47,65 +47,45 @@ const editingSamples = [
   },
 ];
 
-type EditingSample = (typeof editingSamples)[number];
-
 export function EditingGallery() {
-  const [activeSample, setActiveSample] = useState<EditingSample | null>(null);
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog || !activeSample) return;
-
-    dialog.showModal();
-    document.body.classList.add('player-open');
-
-    return () => {
-      document.body.classList.remove('player-open');
-    };
-  }, [activeSample]);
-
-  const closePlayer = () => {
-    dialogRef.current?.close();
-  };
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <>
-      <div className="editing-grid">
-        {editingSamples.map((sample, index) => (
-          <button className="editing-card" type="button" onClick={() => setActiveSample(sample)} key={sample.embed} aria-label={`Play ${sample.title} on this page`}>
-            <span className="editing-media" style={{ position: 'relative' }}>
-              <Image src={sample.image} alt={`${sample.title} editing preview`} fill sizes="(max-width: 760px) 76vw, (max-width: 1120px) 33vw, 20vw" />
+    <div className="editing-grid">
+      {editingSamples.map((sample, index) => {
+        const isActive = activeIndex === index;
+
+        return (
+          <article className={`editing-card${isActive ? ' is-playing' : ''}`} key={sample.embed}>
+            <div className="editing-media">
+              {isActive ? (
+                <iframe
+                  src={sample.embed}
+                  title={`${sample.title} embedded ${sample.platform} player`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              ) : (
+                <Image src={sample.image} alt={`${sample.title} editing preview`} fill sizes="(max-width: 760px) 76vw, (max-width: 1120px) 33vw, 20vw" />
+              )}
               <span className="editing-number">0{index + 1}</span>
-              <span className="editing-play"><Play aria-hidden="true" /></span>
-            </span>
+              {isActive ? (
+                <button className="editing-stop" type="button" onClick={() => setActiveIndex(null)} aria-label={`Stop ${sample.title}`}>
+                  <X aria-hidden="true" /><span>Close</span>
+                </button>
+              ) : (
+                <button className="editing-play" type="button" onClick={() => setActiveIndex(index)} aria-label={`Play ${sample.title} here`}>
+                  <Play aria-hidden="true" />
+                </button>
+              )}
+            </div>
             <span className="editing-meta"><span>{sample.type}</span><span>{sample.platform}</span></span>
             <strong>{sample.title}</strong>
             <small>Credit · {sample.credit}</small>
-          </button>
-        ))}
-      </div>
-
-      <dialog className="player-dialog" ref={dialogRef} onClose={() => setActiveSample(null)} aria-labelledby="player-title">
-        {activeSample ? (
-          <div className={`player-panel${activeSample.platform === 'Instagram' ? ' is-instagram' : ''}`}>
-            <div className="player-topline">
-              <div><span>{activeSample.type}</span><h3 id="player-title">{activeSample.title}</h3></div>
-              <button type="button" onClick={closePlayer} aria-label="Close video player"><X aria-hidden="true" /></button>
-            </div>
-            <div className="player-frame">
-              <iframe
-                src={activeSample.embed}
-                title={`${activeSample.title} embedded ${activeSample.platform} player`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            </div>
-            <p>{activeSample.platform} · Credit {activeSample.credit}</p>
-          </div>
-        ) : null}
-      </dialog>
-    </>
+          </article>
+        );
+      })}
+    </div>
   );
 }
