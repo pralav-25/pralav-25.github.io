@@ -1,7 +1,4 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -70,14 +67,15 @@ a:focus-visible { outline: 3px solid var(--primary); outline-offset: 4px; }
 .header-github svg { width: 17px; }
 
 .hero { min-height: 690px; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(330px, 0.65fr); align-items: center; gap: clamp(50px, 8vw, 110px); padding: 72px 0 88px; }
-.availability { height: 29px; gap: 8px; border: 1px solid rgb(200 255 117 / 35%); background: rgb(200 255 117 / 9%); color: #dfffb0; font-weight: 550; }
+.availability { width: fit-content; min-height: 29px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgb(200 255 117 / 35%); border-radius: 999px; background: rgb(200 255 117 / 9%); color: #dfffb0; padding: 5px 10px; font-size: 12px; font-weight: 550; }
 .availability span { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 4px rgb(200 255 117 / 12%); }
 .eyebrow { margin: 28px 0 16px; color: var(--accent); font-family: var(--font-geist-mono); font-size: 11px; font-weight: 650; letter-spacing: 0.13em; text-transform: uppercase; }
 .hero h1 { max-width: 760px; margin: 0; font-size: clamp(3.2rem, 7.4vw, 6.85rem); font-weight: 680; letter-spacing: -0.072em; line-height: 0.91; }
 .hero h1 em { display: block; color: var(--primary); font-style: normal; }
 .hero-intro { max-width: 660px; margin: 30px 0 0; color: #b9c4c6; font-size: clamp(1rem, 1.8vw, 1.2rem); line-height: 1.7; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.primary-cta, .secondary-cta { height: 46px; padding-inline: 18px; border-radius: 999px; font-weight: 700; }
+.action-button { height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding-inline: 18px; border: 1px solid transparent; border-radius: 999px; font-size: 14px; font-weight: 700; transition: background 160ms ease, color 160ms ease; }
+.primary-cta { background: var(--primary); color: var(--primary-foreground); }
 .primary-cta:hover { background: #b5ed61; }
 .secondary-cta { border-color: rgb(235 244 240 / 25%); background: rgb(255 255 255 / 3%); color: #e7eeeb; }
 .secondary-cta:hover { background: rgb(255 255 255 / 8%); }

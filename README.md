@@ -10,7 +10,7 @@ capabilities, and creative work with direct links to source code and live demos.
 - Responsive, semantic interface design
 - Accessible navigation, focus states, contrast, and reduced-motion support
 - Evidence-led project presentation with verified public links
-- Static generation for a fast, dependable GitHub Pages deployment
+- Static generation for a fast, dependable Vercel deployment
 - Complete social, search, and sharing metadata
 
 ## Featured projects
@@ -39,8 +39,8 @@ pnpm build
 
 ## Stack
 
-Vinext, React, TypeScript, Tailwind CSS, shadcn components, and Lucide icons.
-The site is statically generated and deployed through GitHub Actions.
+Next.js, React, TypeScript, Tailwind CSS, and Lucide icons.
+The site is statically generated, validated through GitHub Actions, and deployed through Vercel.
 
 ## Contact
 

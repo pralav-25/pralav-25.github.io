@@ -1,10 +1,6 @@
 import { ArrowDown, ArrowUpRight, Code2, GitBranch, Mail, Play, ShieldCheck, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
-import { Badge } from '@/components/ui/badge';
-import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-
 const projects = [
   {
     number: '01',
@@ -69,13 +65,13 @@ export default function Home() {
 
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <Badge className="availability"><span aria-hidden="true" />Open to internships &amp; early-career roles</Badge>
+          <span className="availability"><span aria-hidden="true" />Open to internships &amp; early-career roles</span>
           <p className="eyebrow">Developer · Editor · Problem solver</p>
           <h1 id="hero-title">I turn practical ideas into <em>clear digital products.</em></h1>
           <p className="hero-intro">I&apos;m Pralav, a developer and video editor based in India. My work connects engineering, usable interfaces, and visual storytelling.</p>
           <div className="hero-actions">
-            <a className={cn(buttonVariants({ size: 'lg' }), 'primary-cta')} href="#work">Explore selected work <ArrowDown aria-hidden="true" /></a>
-            <a className={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'secondary-cta')} href="mailto:singhpralav07@gmail.com"><Mail aria-hidden="true" />Email me</a>
+            <a className="action-button primary-cta" href="#work">Explore selected work <ArrowDown aria-hidden="true" /></a>
+            <a className="action-button secondary-cta" href="mailto:singhpralav07@gmail.com"><Mail aria-hidden="true" />Email me</a>
           </div>
           <dl className="proof-row" aria-label="Portfolio summary">
             <div><dt>13</dt><dd>Public repositories</dd></div>
