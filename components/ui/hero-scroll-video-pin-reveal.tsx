@@ -6,7 +6,7 @@ export interface HeroScrollVideoRevealProps {
   eyebrow?: string;
   heading?: string;
   tags?: string[];
-  videoId?: string;
+  videoSrc?: string;
   title?: string;
   credit?: string;
 }
@@ -17,20 +17,39 @@ export default function HeroScrollVideoReveal({
   eyebrow = 'Creative practice · Editing',
   heading = 'A cut should feel inevitable.',
   tags = ['Story-led', 'Beat-synced', 'Short-form'],
-  videoId = 'U3FacqdL5e4',
+  videoSrc = '/rb22.mp4',
   title = 'Motion with purpose.',
   credit = 'Original edit · Sinister_editzz',
 }: HeroScrollVideoRevealProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section) return;
+    const video = videoRef.current;
+    if (!section || !video) return;
+
+    const hydrateAndPlay = () => {
+      if (!video.src) video.src = videoSrc;
+      video.play().catch(() => {});
+    };
+    const videoObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) hydrateAndPlay();
+        else video.pause();
+      },
+      { rootMargin: '30% 0px' },
+    );
+    videoObserver.observe(section);
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reducedMotion) {
       section.style.setProperty('--pin-progress', '1');
-      return;
+      hydrateAndPlay();
+      return () => {
+        videoObserver.disconnect();
+        video.pause();
+      };
     }
 
     let frame = 0;
@@ -49,13 +68,13 @@ export default function HeroScrollVideoReveal({
     update();
 
     return () => {
+      videoObserver.disconnect();
+      video.pause();
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, []);
-
-  const videoSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1&rel=0&disablekb=1`;
+  }, [videoSrc]);
 
   return (
     <section className="reel-reveal" id="editing" ref={sectionRef} aria-labelledby="reel-reveal-title">
@@ -71,13 +90,7 @@ export default function HeroScrollVideoReveal({
         <div className="reel-reveal-window" aria-hidden="true">
           <div className="reel-reveal-backdrop" />
           <div className="reel-reveal-frame">
-            <iframe
-              src={videoSrc}
-              title="Muted preview of Pralav Singh's Red Bull editing sample"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              loading="lazy"
-              tabIndex={-1}
-            />
+            <video ref={videoRef} autoPlay muted loop playsInline preload="metadata" poster="/edit-redbull.jpg" />
           </div>
           <div className="reel-reveal-shade" />
         </div>
