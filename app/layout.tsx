@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: 'https://pralav-singh-portfolio.vercel.app',
     siteName: 'Pralav Singh',
     type: 'website',
-    images: [{ url: '/og.png', width: 1730, height: 909, alt: 'Pralav Singh — Developer & Creative Technologist' }],
+    images: [{ url: '/og.png', width: 1731, height: 909, alt: 'Pralav Singh — Developer & Creative Technologist' }],
   },
   twitter: {
     card: 'summary_large_image',
