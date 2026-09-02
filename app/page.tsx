@@ -2,6 +2,7 @@ import { ArrowDownRight, ArrowUpRight, Code2, Film, GitBranch, Mail, ShieldCheck
 import Image from 'next/image';
 import { EditingGallery } from '@/components/editing-gallery';
 import { ScrollMotion } from '@/components/scroll-motion';
+import HeroScrollVideoReveal from '@/components/ui/hero-scroll-video-pin-reveal';
 
 const projects = [
   {
@@ -137,7 +138,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="editing-work" id="editing" aria-labelledby="editing-title">
+      <HeroScrollVideoReveal />
+
+      <section className="editing-work" aria-labelledby="editing-title">
         <div className="editing-heading">
           <p data-reveal="up">Editing samples · 04 original cuts</p>
           <h2 className="motion-lines" id="editing-title" data-reveal="lines"><span>Motion, pace,</span><span>and storytelling.</span></h2>
