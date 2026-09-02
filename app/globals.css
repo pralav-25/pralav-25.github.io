@@ -140,8 +140,8 @@ img { max-width: 100%; }
 .reel-reveal-intro > div span { border: 1px solid rgb(255 255 255 / 34%); border-radius: 999px; padding: 9px 13px; font-family: var(--font-geist-mono); font-size: 9px; letter-spacing: .04em; text-transform: uppercase; }
 .reel-reveal-window { position: absolute; z-index: 2; inset: 0; overflow: hidden; clip-path: circle(calc(9% + var(--pin-progress) * 145%) at 50% 50%); transform: scale(calc(.9 + var(--pin-progress) * .1)); will-change: clip-path, transform; }
 .reel-reveal-backdrop { position: absolute; inset: -32px; background: url('/edit-redbull.jpg') center / cover no-repeat; filter: blur(28px) brightness(.48) saturate(.85); transform: scale(1.12); }
-.reel-reveal-frame { position: absolute; z-index: 2; left: 50%; top: 50%; height: min(84svh, 920px); aspect-ratio: 9 / 16; overflow: hidden; transform: translate(-50%, -50%); border: 1px solid rgb(255 255 255 / 22%); border-radius: 7px; background: #000; box-shadow: 0 24px 80px rgb(0 0 0 / 42%); }
-.reel-reveal-frame iframe { width: 100%; height: 100%; border: 0; }
+.reel-reveal-frame { position: absolute; z-index: 2; left: 50%; top: 50%; width: min(94vw, calc(88svh * 16 / 9)); aspect-ratio: 16 / 9; overflow: hidden; transform: translate(-50%, -50%); border: 1px solid rgb(255 255 255 / 22%); border-radius: 7px; background: #000; box-shadow: 0 24px 80px rgb(0 0 0 / 42%); }
+.reel-reveal-frame video { width: 100%; height: 100%; display: block; border: 0; background: #000; object-fit: contain; }
 .reel-reveal-shade { position: absolute; z-index: 3; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / 10%) 40%, rgb(0 0 0 / 70%) 100%); opacity: clamp(0, calc((var(--pin-progress) - .5) * 2.2), .72); pointer-events: none; }
 .reel-reveal-outro { position: absolute; z-index: 4; left: max(24px, calc((100vw - 1280px) / 2)); bottom: 44px; display: grid; gap: 7px; opacity: clamp(0, calc((var(--pin-progress) - .58) * 3.4), 1); transform: translateY(calc((1 - var(--pin-progress)) * 35px)); color: var(--white); }
 .reel-reveal-outro span, .reel-reveal-outro p { margin: 0; font-family: var(--font-geist-mono); font-size: 9px; letter-spacing: .05em; text-transform: uppercase; }
@@ -295,7 +295,7 @@ footer > div a:hover { color: var(--green); }
   .reel-reveal-intro { width: calc(100% - 32px); }
   .reel-reveal-intro h2 { font-size: clamp(2.8rem, 13vw, 5rem); }
   .reel-reveal-window { clip-path: circle(calc(16% + var(--pin-progress) * 140%) at 50% 50%); }
-  .reel-reveal-frame { height: min(78svh, 720px); }
+  .reel-reveal-frame { width: 94vw; }
   .reel-reveal-outro { bottom: 52px; }
   .reel-reveal-progress { right: 24px; bottom: 24px; width: calc(100% - 48px); }
   .editing-work { padding-block: 90px; }
