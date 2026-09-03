@@ -17,9 +17,10 @@ export function ScrollMotion() {
 
     if (reducedMotion) {
       root.classList.add('motion-loaded');
-      revealItems.forEach((item) => item.classList.add('is-revealed'));
+      revealItems.forEach((item) => item.setAttribute('data-revealed', 'true'));
       return () => {
         root.classList.remove('motion-ready', 'motion-loaded');
+        revealItems.forEach((item) => item.removeAttribute('data-revealed'));
       };
     }
 
@@ -27,7 +28,7 @@ export function ScrollMotion() {
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-revealed');
+          entry.target.setAttribute('data-revealed', 'true');
           observer.unobserve(entry.target);
         });
       },
@@ -85,6 +86,7 @@ export function ScrollMotion() {
       if (frame) window.cancelAnimationFrame(frame);
       root.classList.remove('motion-ready', 'motion-loaded', 'motion-settled');
       root.style.removeProperty('--hero-scroll');
+      revealItems.forEach((item) => item.removeAttribute('data-revealed'));
       scenes.forEach((scene) => scene.style.removeProperty('--view-progress'));
     };
   }, []);
