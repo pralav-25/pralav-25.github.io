@@ -383,3 +383,5 @@ footer > div a:hover { color: var(--green); }
   .reel-reveal-intro { display: none; }
   .reel-reveal-outro { opacity: 1; transform: none; }
 }
+
+.editing-original { font-size: .875rem; text-decoration: underline; text-underline-offset: .2em; }
