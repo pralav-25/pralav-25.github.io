@@ -17,10 +17,13 @@ capabilities, and creative work with direct links to source code and live demos.
 
 | Project | Focus |
 | --- | --- |
+| [ShiftWatch](https://github.com/pralav-25/shiftwatch) · [Live demo](https://pralav-25.github.io/shiftwatch/) | Reproducible ML evaluation, statistical data drift checks, a CSV CLI, and an interactive React dashboard |
 | [StructIQ](https://github.com/pralav-25/StructIQ) | FastAPI, SQLite, infrastructure health scoring, and tests |
 | [Websites4U](https://github.com/pralav-25/w4u) | Responsive product experience and accessible lead flow |
 | [FlowLock](https://github.com/pralav-25/FlowLock) | Interactive API-security concept |
 | [Editing Portfolio](https://github.com/pralav-25/Editing_Portfolio) | React, TypeScript, and visual storytelling |
+
+ShiftWatch's featured chart is copied from its [reproducible experiment results](https://github.com/pralav-25/shiftwatch/blob/main/docs/experiment-results.png) (MIT license). The displayed shifts are synthetic stress tests on 54 held-out UCI Wine rows; results are not production-impact claims.
 
 ## Local development
 

@@ -124,6 +124,20 @@ img { max-width: 100%; }
 .project-foot a:hover { color: #08762e; }
 .project-foot svg { width: 14px; }
 
+.project-featured { grid-column: 1 / -1; scroll-margin-top: 100px; }
+.project-featured .project-media { aspect-ratio: 2080 / 752; background: #fbfaf4; }
+.project-card.project-featured .project-media img { object-fit: contain; filter: none; scale: 1; translate: none; }
+.project-featured .project-media:hover img { transform: none; }
+.project-featured .project-copy { gap: 18px; }
+.project-featured .project-copy > p { max-width: 880px; font-size: 16px; }
+.project-featured .project-copy > .project-evidence { border-left: 3px solid #21808d; padding-left: 16px; color: #314842; font-size: 14px; }
+.project-evidence a { display: inline-flex; align-items: center; gap: 4px; text-decoration: underline; text-underline-offset: 3px; }
+.project-evidence svg { width: 14px; height: 14px; }
+.project-featured .project-foot { flex-wrap: wrap; }
+.project-featured .project-foot > div:last-child { gap: 20px; }
+.project-featured .project-foot a { min-height: 44px; font-size: 14px; }
+.project-featured .project-foot span { font-size: 12px; }
+
 .reel-reveal {
   --pin-progress: 0;
   position: relative;
