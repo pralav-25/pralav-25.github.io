@@ -1,5 +1,7 @@
 # Pralav Singh — Portfolio
 
+[![Checks](https://github.com/pralav-25/pralav-25.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/pralav-25/pralav-25.github.io/actions/workflows/ci.yml)
+
 A recruiter-focused portfolio presenting selected software projects, technical
 capabilities, and creative work with direct links to source code and live demos.
 
@@ -52,3 +54,12 @@ The site is statically generated, validated through GitHub Actions, and deployed
 ## License
 
 Released under the [MIT License](LICENSE).
+
+## Media accessibility
+
+Selecting a gallery sample moves keyboard focus to its Close control. Closing
+returns focus to Play; Escape also closes a player when focus is on the page.
+Each sample includes a direct platform link in case third-party embeds fail.
+Players remain click-to-load and only one runs at a time.
+
+Run `pnpm typecheck`, `pnpm lint`, and `pnpm build` before submitting changes.

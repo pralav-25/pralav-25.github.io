@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Play, X } from 'lucide-react';
 import Image from 'next/image';
 
@@ -50,6 +50,21 @@ const editingSamples = [
 export function EditingGallery() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  const controls = useRef<(HTMLButtonElement | null)[]>([]);
+  const previousIndex = useRef<number | null>(null);
+
+  useEffect(() => {
+    const target = activeIndex ?? previousIndex.current;
+    if (target !== null) controls.current[target]?.focus({ preventScroll: true });
+    previousIndex.current = activeIndex;
+    if (activeIndex === null) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setActiveIndex(null);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [activeIndex]);
+
   return (
     <div className="editing-grid">
       {editingSamples.map((sample, index) => {
@@ -71,11 +86,11 @@ export function EditingGallery() {
               )}
               <span className="editing-number">0{index + 1}</span>
               {isActive ? (
-                <button className="editing-stop" type="button" onClick={() => setActiveIndex(null)} aria-label={`Stop ${sample.title}`}>
+                <button ref={(element) => { controls.current[index] = element; }} className="editing-stop" type="button" onClick={() => setActiveIndex(null)} aria-label={`Stop ${sample.title}`}>
                   <X aria-hidden="true" /><span>Close</span>
                 </button>
               ) : (
-                <button className="editing-play" type="button" onClick={() => setActiveIndex(index)} aria-label={`Play ${sample.title} here`}>
+                <button ref={(element) => { controls.current[index] = element; }} className="editing-play" type="button" onClick={() => setActiveIndex(index)} aria-label={`Play ${sample.title} here`}>
                   <Play aria-hidden="true" />
                 </button>
               )}
@@ -83,6 +98,10 @@ export function EditingGallery() {
             <span className="editing-meta"><span>{sample.type}</span><span>{sample.platform}</span></span>
             <strong>{sample.title}</strong>
             <small>Credit · {sample.credit}</small>
+            <a className="editing-original" href={sample.platform === 'Instagram'
+              ? 'https://www.instagram.com/p/DUlD3i5k2Z6/'
+              : `https://www.youtube.com/watch?v=${new URL(sample.embed).pathname.split('/').pop()}`}
+              target="_blank" rel="noreferrer">Open on {sample.platform === 'Instagram' ? 'Instagram' : 'YouTube'} ↗</a>
           </article>
         );
       })}
