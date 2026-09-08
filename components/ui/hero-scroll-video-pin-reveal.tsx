@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export interface HeroScrollVideoRevealProps {
   eyebrow?: string;
@@ -25,39 +25,34 @@ export default function HeroScrollVideoReveal({
 }: HeroScrollVideoRevealProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [playbackRequested, setPlaybackRequested] = useState<boolean | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
     const video = videoRef.current;
     if (!section || !video) return;
 
-    const hydrateAndPlay = () => {
-      video.play().catch(() => {});
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let inView = false;
+    const syncPlayback = () => {
+      if (inView && !document.hidden && (playbackRequested ?? !preference.matches)) {
+        video.play().catch(() => {});
+      } else video.pause();
     };
-    const videoObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) hydrateAndPlay();
-        else video.pause();
-      },
-      { rootMargin: '30% 0px' },
-    );
+    const videoObserver = new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      syncPlayback();
+    }, { rootMargin: '30% 0px' });
     videoObserver.observe(section);
-
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion) {
-      section.style.setProperty('--pin-progress', '1');
-      hydrateAndPlay();
-      return () => {
-        videoObserver.disconnect();
-        video.pause();
-      };
-    }
+    document.addEventListener('visibilitychange', syncPlayback);
+    preference.addEventListener('change', syncPlayback);
 
     let frame = 0;
     const update = () => {
       const rect = section.getBoundingClientRect();
       const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
-      section.style.setProperty('--pin-progress', clamp(-rect.top / travel).toFixed(4));
+      section.style.setProperty('--pin-progress', preference.matches ? '1' : clamp(-rect.top / travel).toFixed(4));
       frame = 0;
     };
     const requestUpdate = () => {
@@ -70,12 +65,14 @@ export default function HeroScrollVideoReveal({
 
     return () => {
       videoObserver.disconnect();
+      document.removeEventListener('visibilitychange', syncPlayback);
+      preference.removeEventListener('change', syncPlayback);
       video.pause();
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [playbackRequested]);
 
   return (
     <section className="reel-reveal" id="editing" ref={sectionRef} aria-labelledby="reel-reveal-title">
@@ -91,7 +88,7 @@ export default function HeroScrollVideoReveal({
         <div className="reel-reveal-window" aria-hidden="true">
           <div className="reel-reveal-backdrop" />
           <div className="reel-reveal-frame">
-            <video ref={videoRef} autoPlay muted loop playsInline preload="none" poster="/edit-redbull.jpg">
+            <video ref={videoRef} onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} muted loop playsInline preload="none" poster="/edit-redbull.jpg">
               <source src={mobileVideoSrc} media="(max-width: 760px)" type="video/mp4" />
               <source src={videoSrc} type="video/mp4" />
             </video>
@@ -103,7 +100,11 @@ export default function HeroScrollVideoReveal({
           <span>{credit}</span>
           <strong>{title}</strong>
           <p>Keep scrolling to play the full selection.</p>
+
         </div>
+          <button type="button" className="reel-motion-toggle" onClick={() => setPlaybackRequested(!isPlaying)} aria-pressed={isPlaying}>
+            {isPlaying ? 'Pause background video' : 'Play background video'}
+          </button>
         <span className="reel-reveal-progress" aria-hidden="true" />
       </div>
     </section>

@@ -63,3 +63,7 @@ Each sample includes a direct platform link in case third-party embeds fail.
 Players remain click-to-load and only one runs at a time.
 
 Run `pnpm typecheck`, `pnpm lint`, and `pnpm build` before submitting changes.
+
+The background reel has a visible play/pause control, pauses in hidden tabs, and
+starts paused for reduced-motion preferences. Selecting play is an explicit
+opt-in; embedded work samples keep their separate play controls.
