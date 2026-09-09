@@ -42,6 +42,17 @@ Create the production build with:
 pnpm build
 ```
 
+## Update featured work
+
+Project cards are defined in the `projects` array in [app/page.tsx](app/page.tsx).
+Update the description, skills, source URL, and optional live URL together. Place
+preview images in [public/](public/) and reference them with a leading `/`.
+
+Keep the **Featured projects** table above aligned with the visible cards. The
+floating hero cards are separate links in `app/page.tsx`; check those too when
+renaming a project or changing its destination. Verify each source and demo link
+in the browser before publishing an update.
+
 ## Stack
 
 Next.js, React, TypeScript, Tailwind CSS, and Lucide icons.
