@@ -44,7 +44,7 @@ pnpm build
 
 ## Update featured work
 
-Project cards are defined in the `projects` array in [app/page.tsx](app/page.tsx).
+Project cards are defined in the `projects` array in [components/project-browser.tsx](components/project-browser.tsx).
 Update the description, skills, source URL, and optional live URL together. Place
 preview images in [public/](public/) and reference them with a leading `/`.
 
@@ -78,3 +78,9 @@ Run `pnpm typecheck`, `pnpm lint`, and `pnpm build` before submitting changes.
 The background reel has a visible play/pause control, pauses in hidden tabs, and
 starts paused for reduced-motion preferences. Selecting play is an explicit
 opt-in; embedded work samples keep their separate play controls.
+
+### Find relevant work
+
+The selected-work search matches project names, topics, descriptions, and skills
+without navigating away. It announces the result count and offers a clear action
+for empty searches. All cards are present in the initial static HTML.
