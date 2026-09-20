@@ -388,3 +388,13 @@ footer > div a:hover { color: var(--green); }
 
 .reel-motion-toggle { position: absolute; top: 24px; right: 24px; z-index: 5; pointer-events: auto; margin-top: 12px; border: 1px solid currentColor; border-radius: 999px; padding: 10px 16px; background: #0a101de6; color: #fff; cursor: pointer; font: inherit; font-size: 13px; }
 .reel-motion-toggle:focus-visible { outline: 3px solid #c8ff75; outline-offset: 4px; }
+
+.project-search { margin: 0 0 32px; }
+.project-search label { display: block; margin-bottom: 10px; font-weight: 600; }
+.project-search > div { display: flex; flex-wrap: wrap; gap: 12px; }
+.project-search input { flex: 1; min-width: 200px; padding: 14px 18px; border: 1px solid currentColor; border-radius: 8px; background: transparent; color: inherit; }
+.project-search button { padding: 10px 16px; border: 1px solid currentColor; border-radius: 8px; cursor: pointer; }
+.project-search p { margin-top: 12px; }
+.project-card[hidden] { display: none; }
+
+.project-search output { display: block; margin-top: 12px; }
