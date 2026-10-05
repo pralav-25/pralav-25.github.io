@@ -1,0 +1,458 @@
+/* Comic accents for the existing lower-page panels. Motion stays in globals.css. */
+.work,
+.editing-work,
+.reel-reveal,
+.about,
+.skills,
+.contact,
+footer {
+  --comic-yellow: #ffe66a;
+}
+
+.work,
+.editing-work,
+.contact {
+  position: relative;
+  isolation: isolate;
+}
+
+.work {
+  border-block: 3px solid var(--ink);
+}
+
+.work::before,
+.editing-work::before,
+.about-copy::before,
+.contact::before,
+.reel-reveal-sticky::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 150px;
+  height: 120px;
+  background-image: radial-gradient(var(--ink) 1px, transparent 1.2px);
+  background-size: 8px 8px;
+  opacity: .14;
+  mask-image: linear-gradient(135deg, #000 30%, transparent 85%);
+  pointer-events: none;
+}
+
+.work::before {
+  top: 28px;
+  right: max(24px, calc((100vw - 1280px) / 2));
+}
+
+.work-heading,
+.project-grid,
+.editing-heading,
+.editing-grid,
+.about-copy > *,
+.contact > p,
+.contact h2,
+.contact > div {
+  position: relative;
+  z-index: 1;
+}
+
+.work-heading > p,
+.editing-heading > p:first-child,
+.about-copy .section-label,
+.skills-heading .section-label,
+.reel-reveal-intro > p {
+  width: fit-content;
+  max-width: 100%;
+  justify-self: start;
+  align-self: start;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--comic-yellow);
+  color: var(--ink);
+  padding: 9px 11px;
+  box-shadow: 3px 3px 0 var(--ink);
+  line-height: 1.4;
+}
+
+.work h2,
+.about h2,
+.contact h2 {
+  text-shadow: 2px 3px 0 var(--comic-yellow);
+}
+
+.editing-heading h2,
+.skills h2,
+.reel-reveal-intro h2 {
+  text-shadow: 3px 3px 0 rgb(99 214 121 / 48%);
+}
+
+.work-heading > a {
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--white);
+  padding: 10px 12px;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.work-heading > a:hover,
+.work-heading > a:focus-visible {
+  background: var(--comic-yellow);
+}
+
+.work-heading > a:focus-visible,
+.editing-work a:focus-visible,
+.editing-work button:focus-visible,
+.contact > div a:focus-visible {
+  outline-color: var(--ink);
+  outline-offset: 5px;
+}
+
+/* The pinned reel keeps its existing dimensions, transforms, and clip path. */
+.reel-reveal-sticky {
+  border-block: 3px solid var(--comic-yellow);
+}
+
+.reel-reveal-sticky::before {
+  top: 24px;
+  left: 24px;
+  background-image: radial-gradient(var(--comic-yellow) 1px, transparent 1.2px);
+  opacity: .18;
+}
+
+.reel-reveal-intro > p {
+  display: inline-block;
+  box-shadow: 4px 4px 0 var(--paper);
+}
+
+.reel-reveal-intro > div span {
+  border: 2px solid var(--paper);
+  border-radius: 4px;
+  background: var(--ink);
+  box-shadow: 2px 2px 0 var(--green);
+}
+
+.reel-reveal-frame {
+  border: 3px solid var(--paper);
+  border-radius: 5px;
+  box-shadow: 6px 6px 0 var(--comic-yellow);
+}
+
+.reel-reveal-outro span {
+  width: fit-content;
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  background: var(--comic-yellow);
+  color: var(--ink);
+  padding: 5px 8px;
+}
+
+.reel-reveal-progress {
+  height: 5px;
+  background: rgb(255 255 255 / 40%);
+}
+
+.reel-reveal-progress::after {
+  background: var(--comic-yellow);
+}
+
+/* Paper frames let the editing stills read like individual comic panels. */
+.editing-work {
+  border-bottom: 3px solid var(--ink);
+}
+
+.editing-work::before {
+  top: 26px;
+  right: max(24px, calc((100vw - 1280px) / 2));
+  background-image: radial-gradient(var(--green) 1px, transparent 1.2px);
+  opacity: .18;
+}
+
+.editing-heading > p:first-child,
+.skills-heading .section-label {
+  box-shadow: 3px 3px 0 var(--green);
+}
+
+.editing-card {
+  border: 2px solid var(--ink);
+  border-radius: 5px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px;
+  box-shadow: 4px 4px 0 var(--comic-yellow);
+}
+
+.editing-media {
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+}
+
+.editing-number {
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  background: var(--comic-yellow);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.editing-play {
+  border: 2px solid var(--ink);
+  background: var(--comic-yellow);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.editing-stop {
+  border: 2px solid var(--paper);
+}
+
+.editing-work .editing-stop:focus-visible {
+  outline-color: var(--comic-yellow);
+}
+
+.editing-meta,
+.editing-card small {
+  color: #4a4a46;
+}
+
+.editing-original {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  width: fit-content;
+}
+
+/* Caption boxes frame the portrait while the biography remains easy to read. */
+.about {
+  border-block: 3px solid var(--ink);
+  background-image: none;
+}
+
+.about-portrait {
+  border-right: 3px solid var(--ink);
+}
+
+.about-portrait span {
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--comic-yellow);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.about-copy {
+  position: relative;
+  isolation: isolate;
+}
+
+.about-copy::before {
+  top: 24px;
+  right: 24px;
+  width: 110px;
+  height: 90px;
+}
+
+.about dl {
+  border-top: 2px solid var(--ink);
+  padding-top: 16px;
+}
+
+.about dt {
+  text-shadow: 2px 2px 0 var(--comic-yellow);
+}
+
+/* Each skill remains one row, with a small color cue in its ink frame. */
+.skills {
+  border-bottom: 3px solid var(--green);
+}
+
+.discipline-list {
+  border: 2px solid var(--paper);
+  box-shadow: 5px 5px 0 var(--green);
+}
+
+.discipline-list article {
+  --row-accent: var(--green);
+  border-bottom: 2px solid var(--paper);
+  border-left: 5px solid var(--row-accent);
+  padding-inline: 14px;
+}
+
+.discipline-list article:nth-child(2) {
+  --row-accent: var(--comic-yellow);
+}
+
+.discipline-list article:nth-child(3) {
+  --row-accent: var(--paper);
+}
+
+.discipline-list article:last-child {
+  border-bottom: 0;
+}
+
+.discipline-list article:hover {
+  background: var(--row-accent);
+  padding-inline: 14px;
+}
+
+.discipline-number {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  background: var(--row-accent);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.discipline-list svg {
+  color: var(--row-accent);
+}
+
+.discipline-list article:hover svg {
+  color: var(--ink);
+}
+
+.discipline-list h3 {
+  min-width: 0;
+}
+
+/* The existing contact invitation becomes a small speech balloon. */
+.contact {
+  border-block: 3px solid var(--ink);
+}
+
+.contact::before {
+  top: 28px;
+  right: 28px;
+}
+
+.contact > p {
+  width: fit-content;
+  max-width: calc(100% - 60px);
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  background: var(--white);
+  padding: 12px 16px;
+  box-shadow: 4px 4px 0 var(--ink);
+  line-height: 1.5;
+}
+
+.contact > p::after {
+  content: '';
+  position: absolute;
+  left: 24px;
+  bottom: -10px;
+  width: 16px;
+  height: 10px;
+  background: var(--ink);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  pointer-events: none;
+}
+
+.contact > div a {
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--green);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.contact > div a:first-child {
+  background: var(--comic-yellow);
+  color: var(--ink);
+}
+
+.contact-spark {
+  color: var(--ink);
+  fill: var(--comic-yellow);
+  stroke-width: 1.5;
+  pointer-events: none;
+}
+
+footer {
+  border-top: 3px solid var(--comic-yellow);
+}
+
+.footer-brand {
+  text-shadow: 2px 2px 0 var(--green);
+}
+
+footer p,
+footer span {
+  color: #d2d1c5;
+}
+
+footer > div a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  border-bottom: 1px solid var(--green);
+}
+
+@media (max-width: 760px) {
+  .work::before,
+  .editing-work::before,
+  .contact::before,
+  .reel-reveal-sticky::before {
+    width: 96px;
+    height: 72px;
+  }
+
+  .work-heading > p,
+  .editing-heading > p:first-child,
+  .about-copy .section-label,
+  .skills-heading .section-label {
+    padding: 8px 10px;
+  }
+
+  .reel-reveal-frame {
+    border-inline: 0;
+    border-radius: 0;
+    box-shadow: 0 5px 0 var(--comic-yellow);
+  }
+
+  .editing-grid {
+    padding: 12px 7px 12px 1px;
+    scroll-padding-inline: 1px;
+  }
+
+  .about-portrait {
+    border-right: 0;
+    border-bottom: 3px solid var(--ink);
+  }
+
+  .about-copy::before {
+    width: 80px;
+    height: 64px;
+  }
+
+  .discipline-list article,
+  .discipline-list article:hover {
+    padding-inline: 10px;
+  }
+
+  .contact > p {
+    max-width: calc(100% - 38px);
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .work h2,
+  .about h2,
+  .contact h2 {
+    text-shadow: 2px 2px 0 var(--comic-yellow);
+  }
+
+  .editing-heading h2,
+  .skills h2,
+  .reel-reveal-intro h2 {
+    text-shadow: 2px 2px 0 rgb(99 214 121 / 48%);
+  }
+
+  .about-portrait span {
+    left: 18px;
+    bottom: 18px;
+    max-width: calc(100% - 40px);
+  }
+
+  .discipline-list {
+    box-shadow: 4px 4px 0 var(--green);
+  }
+}
