@@ -65,8 +65,9 @@ Next.js, React, TypeScript, Tailwind CSS, Framer Motion, and Lucide icons.
 The site is statically generated, validated through GitHub Actions, and deployed through Vercel.
 
 The project navigator in `components/ui/scroll-morph-hero.tsx` uses the same project
-data as the detail cards. Its previews morph from a circle to an arc with normal
-page scrolling, and each preview links to the corresponding project details.
+data as the detail cards. Its full-width section follows normal page scrolling
+through scattered, line, circle, and arc layouts. Each preview links to the
+corresponding project details.
 Phones and reduced-motion preferences receive a compact static navigator.
 
 ## Contact
