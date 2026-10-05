@@ -1,0 +1,45 @@
+.comic-playground { position: absolute; z-index: 12; left: 50%; top: 92px; width: 70px; height: 56px; transform: translateX(-50%); pointer-events: none; }
+.comic-spark-button { display: block; width: 100%; height: 100%; min-height: 44px; border: 0; background: transparent; color: var(--ink); padding: 0; cursor: pointer; pointer-events: auto; }
+.comic-spark-button svg { display: block; width: 100%; height: 100%; filter: drop-shadow(3px 3px 0 var(--ink)); transition: transform 180ms ease; }
+.comic-spark-button:focus-visible, .fun-portrait:focus-visible { outline-color: var(--ink); outline-offset: 5px; }
+.comic-eye-right { transform-box: fill-box; transform-origin: center; transition: transform 140ms ease; }
+.fun-portrait { padding: 0; cursor: pointer; }
+
+.comic-quip { position: absolute; right: calc(100% + 14px); top: 3px; width: max-content; max-width: 150px; margin: 0; border: 2px solid var(--ink); border-radius: 12px; background: var(--white); color: var(--ink); padding: 7px 10px; box-shadow: 3px 3px 0 var(--ink); font-family: var(--font-geist-mono); font-size: 10px; font-weight: 750; line-height: 1.4; opacity: 0; visibility: hidden; transition: opacity 140ms ease; }
+.comic-quip[data-visible='true'] { opacity: 1; visibility: visible; }
+.comic-quip::after { content: ''; position: absolute; right: -6px; top: 12px; width: 10px; height: 10px; border-top: 2px solid var(--ink); border-right: 2px solid var(--ink); background: var(--white); transform: rotate(45deg); }
+.comic-burst { position: absolute; inset: 0; pointer-events: none; }
+.comic-particle { position: absolute; left: 50%; top: 50%; width: 6px; height: 9px; border: 1px solid var(--ink); background: var(--comic-yellow); animation: comic-confetti 600ms ease-out var(--particle-delay, 0ms) both; }
+.comic-particle:nth-child(3n + 2) { background: var(--comic-lilac); border-radius: 50%; }
+.comic-particle:nth-child(3n) { background: var(--white); }
+.comic-static-star { position: absolute; right: -26px; top: 4px; color: var(--comic-yellow); font-size: 24px; -webkit-text-stroke: 1px var(--ink); }
+@keyframes comic-confetti { from { opacity: 1; transform: translate(-50%, -50%) rotate(0deg); } to { opacity: 0; transform: translate(var(--particle-x), var(--particle-y)) rotate(var(--particle-spin)); } }
+
+.comic-impact { position: absolute; z-index: 3; left: 28px; top: 26px; display: grid; place-items: center; width: 68px; height: 44px; border: 2px solid var(--ink); border-radius: 50% 35% 45% 30%; background: var(--comic-yellow); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 22px; letter-spacing: .02em; opacity: 0; transform: rotate(-12deg) scale(.65); transition: transform 180ms ease, opacity 180ms ease; pointer-events: none; }
+.project-card:focus-within .comic-impact { opacity: 1; transform: rotate(-12deg) scale(1); }
+
+@media (hover: hover) and (pointer: fine) {
+  .comic-spark-button:hover svg { transform: rotate(-8deg) scale(1.05); }
+  .comic-spark-button:hover .comic-eye-right { transform: scaleY(.2); }
+  .project-card:hover .comic-impact { opacity: 1; transform: rotate(-12deg) scale(1); }
+  .hero-previews .float-card:hover { box-shadow: 7px 7px 0 var(--ink); }
+}
+@media (max-width: 1240px) and (min-width: 761px) {
+  .fun-portrait { display: none; }
+  .comic-quip { right: auto; left: calc(100% + 10px); }
+  .comic-quip::after { right: auto; left: -6px; transform: rotate(-135deg); }
+}
+@media (max-width: 760px) {
+  .hero { padding-top: 128px; }
+  .comic-playground { left: auto; right: 10px; top: 78px; width: 44px; height: 44px; transform: none; }
+  .comic-spark-button svg { filter: drop-shadow(2px 2px 0 var(--ink)); }
+  .comic-quip { top: 1px; right: calc(100% + 8px); max-width: min(188px, 54vw); padding: 5px 8px; font-size: 9px; line-height: 1.25; }
+  .comic-quip::after { top: 10px; }
+  .comic-static-star { right: 0; top: 0; }
+  .comic-impact { width: 58px; height: 38px; font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .comic-particle { display: none; animation: none; }
+  .comic-spark-button:hover svg, .comic-spark-button:hover .comic-eye-right { transform: none; }
+  .comic-impact { transition: none; }
+}

@@ -1,6 +1,7 @@
 import { ArrowDownRight, ArrowUpRight, Code2, Film, GitBranch, Mail, ShieldCheck, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import { EditingGallery } from '@/components/editing-gallery';
+import { ComicPlayground } from '@/components/comic-playground';
 import { ScrollMotion } from '@/components/scroll-motion';
 import HeroScrollVideoReveal from '@/components/ui/hero-scroll-video-pin-reveal';
 
@@ -140,9 +141,7 @@ export default function Home() {
           </div>
         </header>
 
-        <div className="float-card float-profile" aria-hidden="true">
-          <Image src="https://avatars.githubusercontent.com/u/174412353?v=4" alt="" width={220} height={220} priority />
-        </div>
+        <ComicPlayground />
 
         <div className="hero-center" data-scroll-scene>
           <p className="hero-kicker">A developer &amp; creative portfolio by Pralav Singh</p>
@@ -204,6 +203,7 @@ export default function Home() {
           {projects.map((project) => (
             <article className={`project-card${project.featured ? ' project-featured' : ''}`} data-reveal="card" key={project.name} id={project.featured ? 'shiftwatch' : undefined}>
               <span className="project-sticker" aria-hidden="true">{projectNotes[project.name]}</span>
+              {!project.featured ? <span className="comic-impact" aria-hidden="true">POW!</span> : null}
               <a className="project-media" data-scroll-scene href={project.live ?? project.source} target="_blank" rel="noreferrer" aria-label={`Open ${project.name}`}>
                 <Image src={project.image} alt={project.imageAlt ?? `${project.name} project preview`} fill sizes={project.featured ? '(max-width: 1280px) 100vw, 1280px' : '(max-width: 760px) 100vw, 50vw'} />
                 {!project.featured ? <span className="project-number">{project.number}</span> : null}
