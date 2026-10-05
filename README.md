@@ -24,8 +24,14 @@ capabilities, and creative work with direct links to source code and live demos.
 | [Websites4U](https://github.com/pralav-25/w4u) | Responsive product experience and accessible lead flow |
 | [FlowLock](https://github.com/pralav-25/FlowLock) | Interactive API-security concept |
 | [Editing Portfolio](https://github.com/pralav-25/Editing_Portfolio) | React, TypeScript, and visual storytelling |
+| [Dataset Gate](https://github.com/pralav-25/dataset-gate) | Versioned CSV contracts, validation history, CLI/API workflows, and GitHub Actions |
+| [Interleave](https://github.com/pralav-25/interleave) · [Live demo](https://interleave-pralav.vercel.app) | Step-by-step concurrency experiments, state inspection, and replay schedules |
+| [CHROMA](https://github.com/pralav-25/chroma) · [Live demo](https://chroma-tawny.vercel.app/) | WebGL shader studio, editable palettes, local collections, and PNG export |
+| [Python Algorithm Lab](https://github.com/pralav-25/python-algorithm-lab) | Documented algorithm implementations, runnable examples, and independent tests |
 
 ShiftWatch's featured chart is copied from its [reproducible experiment results](https://github.com/pralav-25/shiftwatch/blob/main/docs/experiment-results.png) (MIT license). The displayed shifts are synthetic stress tests on 54 held-out UCI Wine rows; results are not production-impact claims.
+
+Dataset Gate and Interleave previews use their repositories' report and workbench screenshots. The CHROMA preview is captured from its live studio. Python Algorithm Lab uses an illustration of the binary-search example from its README.
 
 ## Local development
 

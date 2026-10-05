@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-labelledby="title description">
+  <title id="title">Python Algorithm Lab</title>
+  <desc id="description">A runnable binary search example returns index 1, the first occurrence of 3 in the sequence 1, 3, 3, 8.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102433"/>
+      <stop offset="1" stop-color="#080f1c"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#2d9c98" stop-opacity=".13"/>
+      <stop offset="1" stop-color="#2d9c98" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="800" fill="url(#background)"/>
+  <circle cx="1150" cy="80" r="480" fill="url(#glow)"/>
+  <path d="M0 799H1280" stroke="#24404c" stroke-width="2"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="92" y="143" fill="#f3f7fa" font-size="65" font-weight="700" letter-spacing="-2">Python Algorithm Lab</text>
+    <text x="94" y="197" fill="#9eb7c5" font-size="30">Runnable examples · regression tests</text>
+  </g>
+  <rect x="88" y="257" width="1104" height="194" rx="20" fill="#0b1420" stroke="#2a4152" stroke-width="2"/>
+  <g font-family="Consolas, Menlo, Monaco, monospace" font-size="28">
+    <text x="125" y="329" xml:space="preserve"><tspan fill="#85baf3">from</tspan><tspan fill="#dce6f0"> algorithm_lab.binary_search </tspan><tspan fill="#85baf3">import</tspan><tspan fill="#dce6f0"> binary_search</tspan></text>
+    <text x="125" y="393" xml:space="preserve"><tspan fill="#85baf3">assert</tspan><tspan fill="#dce6f0"> binary_search([</tspan><tspan fill="#f1ca80">1, 3, 3, 8</tspan><tspan fill="#dce6f0">], </tspan><tspan fill="#f1ca80">3</tspan><tspan fill="#dce6f0">) == </tspan><tspan fill="#83dfba">1</tspan></text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="94" y="516" fill="#9eb7c5" font-size="27">Search for 3</text>
+    <g fill="#111f2d" stroke="#334d60" stroke-width="2">
+      <rect x="92" y="550" width="135" height="114" rx="16"/>
+      <rect x="264" y="550" width="135" height="114" rx="16" fill="#173c37" stroke="#83dfba" stroke-width="3"/>
+      <rect x="436" y="550" width="135" height="114" rx="16"/>
+      <rect x="608" y="550" width="135" height="114" rx="16"/>
+    </g>
+    <g fill="#eef3f8" font-size="53" text-anchor="middle" font-weight="700">
+      <text x="159.5" y="626">1</text>
+      <text x="331.5" y="626" fill="#a7f1d4">3</text>
+      <text x="503.5" y="626">3</text>
+      <text x="675.5" y="626">8</text>
+    </g>
+    <g fill="#7995a7" font-size="24" text-anchor="middle">
+      <text x="159.5" y="705">0</text>
+      <text x="331.5" y="705" fill="#a7f1d4">1</text>
+      <text x="503.5" y="705">2</text>
+      <text x="675.5" y="705">3</text>
+    </g>
+    <path d="M808 591H766M781 576L766 591L781 606" fill="none" stroke="#83dfba" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="837" y="584" fill="#d9ece5" font-size="29" font-weight="600">First matching</text>
+    <text x="837" y="627" fill="#a7f1d4" font-size="34" font-weight="700">index 1</text>
+  </g>
+</svg>
