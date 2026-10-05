@@ -78,16 +78,22 @@ img { max-width: 100%; }
 .hero-status span { width: 8px; height: 8px; border-radius: 50%; background: #008b2d; box-shadow: 0 0 0 4px rgb(0 139 45 / 15%); }
 
 .float-card { position: absolute; z-index: 4; overflow: hidden; border: 1px solid rgb(11 11 11 / 28%); border-radius: 7px; background: #ddd; box-shadow: 0 14px 30px rgb(11 11 11 / 17%); transition: transform 220ms ease, filter 220ms ease; }
-.float-card:hover { z-index: 9; filter: saturate(1.12); }
+.float-card:hover { z-index: 7; filter: saturate(1.12); }
 .float-card img { width: 100%; height: 100%; display: block; object-fit: cover; }
-.float-struct { --intro-x: 260px; --intro-y: 150px; --exit-x: -150px; --exit-y: -85px; left: 4.2%; top: 145px; width: 250px; aspect-ratio: 1.35; transform: rotate(-1.5deg); }
-.float-struct:hover { transform: rotate(-1.5deg) translateY(-8px); }
-.float-flow { --intro-x: 285px; --intro-y: -135px; --exit-x: -165px; --exit-y: 115px; left: 7.4%; bottom: 102px; width: 210px; aspect-ratio: 1.45; transform: rotate(1deg); }
-.float-flow:hover { transform: rotate(1deg) translateY(-8px); }
-.float-w4u { --intro-x: -285px; --intro-y: -145px; --exit-x: 175px; --exit-y: 120px; right: 3.3%; bottom: 85px; width: 260px; aspect-ratio: 1.4; transform: rotate(1.2deg); }
-.float-w4u:hover { transform: rotate(1.2deg) translateY(-8px); }
-.float-edit { --intro-x: -275px; --intro-y: 145px; --exit-x: 145px; --exit-y: -90px; right: 6.8%; top: 168px; width: 205px; aspect-ratio: 1.5; transform: rotate(-1deg); }
-.float-edit:hover { transform: rotate(-1deg) translateY(-8px); }
+.hero-previews { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.hero-previews .float-card { width: clamp(100px, 13.2vw, 200px); aspect-ratio: 1.55; pointer-events: auto; transform: rotate(var(--card-tilt, 0deg)); }
+.hero-previews .float-card:hover { transform: rotate(var(--card-tilt, 0deg)) translateY(-8px); }
+.float-struct { --intro-x: 260px; --intro-y: 150px; --exit-x: -150px; --exit-y: -85px; --card-tilt: -1.5deg; left: 2.3%; top: 14%; }
+.float-interleave { --intro-x: 275px; --intro-y: 65px; --exit-x: -155px; --exit-y: -35px; --card-tilt: 2deg; left: 3%; top: 35%; }
+.float-flow { --intro-x: 285px; --intro-y: -135px; --exit-x: -165px; --exit-y: 115px; --card-tilt: 1deg; left: 1.6%; top: 56%; }
+.float-algorithms { --intro-x: 250px; --intro-y: -160px; --exit-x: -140px; --exit-y: 125px; --card-tilt: -2deg; left: 2.7%; top: 77%; }
+.float-edit { --intro-x: -275px; --intro-y: 145px; --exit-x: 145px; --exit-y: -90px; --card-tilt: -1deg; right: 2.3%; top: 12%; }
+.float-dataset { --intro-x: -260px; --intro-y: 90px; --exit-x: 150px; --exit-y: -50px; --card-tilt: 2deg; right: 3%; top: 30%; }
+.float-chroma { --intro-x: -285px; --intro-y: -45px; --exit-x: 160px; --exit-y: 45px; --card-tilt: -2deg; right: 1.6%; top: 48%; }
+.float-w4u { --intro-x: -285px; --intro-y: -145px; --exit-x: 175px; --exit-y: 120px; --card-tilt: 1.2deg; right: 2.7%; top: 66%; }
+.float-shiftwatch { --intro-x: -250px; --intro-y: -170px; --exit-x: 145px; --exit-y: 130px; --card-tilt: -1deg; right: 2.3%; top: 84%; background: var(--white); }
+.hero-previews .float-shiftwatch { aspect-ratio: 2080 / 752; }
+.float-shiftwatch img { object-fit: contain; }
 .float-profile { --intro-x: -220px; --intro-y: 175px; --exit-x: 70px; --exit-y: -125px; right: 15%; top: 94px; width: 88px; height: 102px; transform: rotate(2.5deg); }
 .float-profile img { filter: saturate(.75) contrast(1.04); }
 
@@ -284,11 +290,12 @@ footer > div a:hover { color: var(--green); }
 
 @media (max-width: 1040px) {
   .site-header nav { gap: 22px; }
-  .float-struct { left: -30px; }
-  .float-flow { left: -20px; }
-  .float-w4u { right: -35px; }
-  .float-edit { right: -25px; }
-  .float-profile { right: 11%; }
+  .hero-previews .float-card { width: clamp(100px, 14vw, 150px); }
+  .float-struct, .float-flow, .float-algorithms { left: 6px; }
+  .float-interleave { left: 8px; }
+  .float-edit, .float-chroma, .float-shiftwatch { right: 6px; }
+  .float-dataset, .float-w4u { right: 8px; }
+  .float-profile { display: none; }
   .work-heading { grid-template-columns: 1fr 2fr; }
   .work-heading > a { grid-column: 2; justify-self: start; }
   .editing-heading { grid-template-columns: 1fr 2fr; }
@@ -302,17 +309,15 @@ footer > div a:hover { color: var(--green); }
   .site-header { top: max(10px, env(safe-area-inset-top)); width: calc(100% - 20px); height: 54px; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 6px 8px 6px 16px; }
   .site-header nav, .login-link { display: none; }
   .contact-pill { min-height: 40px; padding-inline: 15px; }
-  .hero-center { width: 100%; }
+  .hero-center { order: 1; width: 100%; }
   .hero h1 { width: 100%; max-width: 100%; font-size: clamp(3rem, 13vw, 6rem); line-height: .8; }
   .hero h1 .reverse { margin-top: 13px; padding: 8px 17px 13px; }
   .hero-kicker { max-width: 270px; margin-bottom: 15px; }
   .hero-intro { max-width: 390px; margin-top: 28px; line-height: 1.5; }
   .hero-cta { min-height: 48px; margin-top: 24px; }
-  .float-card { --card-opacity: .48; opacity: .48; pointer-events: none; }
-  .float-struct { top: 116px; width: 145px; }
-  .float-flow { bottom: 82px; width: 130px; }
-  .float-w4u { bottom: 76px; width: 150px; }
-  .float-edit { top: 138px; width: 130px; }
+  .hero-previews { position: relative; inset: auto; order: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: min(420px, 100%); margin-top: 28px; }
+  .hero-previews .float-card, .motion-ready .hero-previews .float-card { --card-opacity: 1; position: relative; inset: auto; width: 100%; min-height: 44px; aspect-ratio: 1.55; opacity: 1; pointer-events: auto; translate: none; scale: 1; }
+  .hero-previews .float-card:hover { transform: rotate(var(--card-tilt, 0deg)); filter: none; }
   .float-profile { display: none; }
   .hero-status { bottom: max(16px, env(safe-area-inset-bottom)); width: min(max-content, calc(100% - 28px)); justify-content: center; text-align: center; font-size: 8px; }
   .ticker-track { min-height: 64px; }
@@ -368,7 +373,6 @@ footer > div a:hover { color: var(--green); }
   .contact-pill { padding-inline: 14px; }
   .hero h1 { font-size: 11vw; }
   .hero-intro { font-size: 15px; }
-  .float-card { opacity: .42; }
   .ticker-track { min-height: 62px; }
   .project-foot { align-items: flex-start; flex-direction: column; }
   .about dl { display: grid; grid-template-columns: repeat(3, 1fr); }

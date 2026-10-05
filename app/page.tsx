@@ -140,18 +140,6 @@ export default function Home() {
           </div>
         </header>
 
-        <a className="float-card float-struct" href="https://github.com/pralav-25/StructIQ" target="_blank" rel="noreferrer" aria-label="View StructIQ">
-          <Image src="/structiq-card.png" alt="StructIQ project preview" fill sizes="250px" />
-        </a>
-        <a className="float-card float-flow" href="https://flow-lock-nine.vercel.app" target="_blank" rel="noreferrer" aria-label="View FlowLock">
-          <Image src="/flowlock-card.png" alt="FlowLock project preview" fill sizes="210px" />
-        </a>
-        <a className="float-card float-w4u" href="https://w4u-indol.vercel.app" target="_blank" rel="noreferrer" aria-label="View Websites4U">
-          <Image src="/w4u-card.png" alt="Websites4U project preview" fill sizes="260px" />
-        </a>
-        <a className="float-card float-edit" href="https://www.instagram.com/ig_sinisterrrr/" target="_blank" rel="noreferrer" aria-label="View Pralav's editing work on Instagram">
-          <Image src="/editing-card.png" alt="Editing portfolio preview" fill sizes="205px" />
-        </a>
         <div className="float-card float-profile" aria-hidden="true">
           <Image src="https://avatars.githubusercontent.com/u/174412353?v=4" alt="" width={220} height={220} priority />
         </div>
@@ -167,6 +155,35 @@ export default function Home() {
           <a className="hero-cta" href="#work">Explore the work <ArrowDownRight aria-hidden="true" /></a>
         </div>
 
+        <div className="hero-previews">
+          <a className="float-card float-struct" href="https://github.com/pralav-25/StructIQ" target="_blank" rel="noreferrer" aria-label="View StructIQ">
+            <Image src="/structiq-card.png" alt="StructIQ project preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          </a>
+          <a className="float-card float-flow" href="https://flow-lock-nine.vercel.app" target="_blank" rel="noreferrer" aria-label="View FlowLock">
+            <Image src="/flowlock-card.png" alt="FlowLock project preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          </a>
+          <a className="float-card float-w4u" href="https://w4u-indol.vercel.app" target="_blank" rel="noreferrer" aria-label="View Websites4U">
+            <Image src="/w4u-card.png" alt="Websites4U project preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          </a>
+          <a className="float-card float-edit" href="https://www.instagram.com/ig_sinisterrrr/" target="_blank" rel="noreferrer" aria-label="View Pralav's editing work on Instagram">
+            <Image src="/editing-card.png" alt="Editing portfolio preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          </a>
+          <a className="float-card float-interleave" href="https://interleave-pralav.vercel.app" target="_blank" rel="noreferrer" aria-label="View Interleave">
+            <Image src="/interleave-card.webp" alt="Interleave project preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          </a>
+          <a className="float-card float-dataset" href="https://github.com/pralav-25/dataset-gate" target="_blank" rel="noreferrer" aria-label="View Dataset Gate">
+            <Image src="/dataset-gate-card.jpg" alt="Dataset Gate report preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          </a>
+          <a className="float-card float-chroma" href="https://chroma-tawny.vercel.app/" target="_blank" rel="noreferrer" aria-label="View CHROMA">
+            <Image src="/chroma-card.jpg" alt="CHROMA studio preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          </a>
+          <a className="float-card float-algorithms" href="https://github.com/pralav-25/python-algorithm-lab" target="_blank" rel="noreferrer" aria-label="View Python Algorithm Lab">
+            <Image src="/python-algorithm-lab-card.svg" alt="Python Algorithm Lab binary search preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          </a>
+          <a className="float-card float-shiftwatch" href="https://pralav-25.github.io/shiftwatch/" target="_blank" rel="noreferrer" aria-label="View ShiftWatch">
+            <Image src="/shiftwatch-results.png" alt="ShiftWatch benchmark results preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          </a>
+        </div>
         <div className="hero-status"><span /> Open to internships &amp; early-career roles</div>
       </section>
 
