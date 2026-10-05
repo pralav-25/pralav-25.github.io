@@ -101,6 +101,18 @@ const projects = [
   },
 ];
 
+const projectNotes: Record<string, string> = {
+  ShiftWatch: 'Spot the shift',
+  StructIQ: 'Look a little closer',
+  Websites4U: 'Web, with personality',
+  FlowLock: 'Mind the gate',
+  'Editing Portfolio': 'Cut. Frame. Repeat.',
+  'Dataset Gate': 'Keep it clean',
+  Interleave: 'Untangle the race',
+  CHROMA: 'Color outside the lines',
+  'Python Algorithm Lab': 'A little logic',
+};
+
 const disciplines = [
   { icon: Code2, label: 'Product engineering', copy: 'Responsive interfaces, interactive prototypes, APIs, and practical data layers.' },
   { icon: ShieldCheck, label: 'Secure thinking', copy: 'Accessible controls, tested logic, documented choices, and sensible defaults.' },
@@ -166,7 +178,7 @@ export default function Home() {
 
       <section className="work" id="work" aria-labelledby="work-title">
         <div className="work-heading">
-          <p data-reveal="up">Selected work · 2025—2026</p>
+          <p data-reveal="up">Selected work · 2025—2026 <Sparkles className="work-heading-doodle" aria-hidden="true" /></p>
           <h2 className="motion-lines" id="work-title" data-reveal="lines"><span>Come for the craft.</span><span>Stay for the thinking.</span></h2>
           <a data-reveal="up" href="https://github.com/pralav-25?tab=repositories" target="_blank" rel="noreferrer">View all repositories <ArrowUpRight aria-hidden="true" /></a>
         </div>
@@ -174,9 +186,10 @@ export default function Home() {
         <div className="project-grid">
           {projects.map((project) => (
             <article className={`project-card${project.featured ? ' project-featured' : ''}`} data-reveal="card" key={project.name} id={project.featured ? 'shiftwatch' : undefined}>
+              <span className="project-sticker" aria-hidden="true">{projectNotes[project.name]}</span>
               <a className="project-media" data-scroll-scene href={project.live ?? project.source} target="_blank" rel="noreferrer" aria-label={`Open ${project.name}`}>
                 <Image src={project.image} alt={project.imageAlt ?? `${project.name} project preview`} fill sizes={project.featured ? '(max-width: 1280px) 100vw, 1280px' : '(max-width: 760px) 100vw, 50vw'} />
-                {!project.featured ? <span>{project.number}</span> : null}
+                {!project.featured ? <span className="project-number">{project.number}</span> : null}
               </a>
               <div className="project-copy">
                 <div><p>{project.category}</p><h3>{project.name}</h3></div>
