@@ -4,6 +4,7 @@ import { EditingGallery } from '@/components/editing-gallery';
 import { ComicPlayground } from '@/components/comic-playground';
 import { ScrollMotion } from '@/components/scroll-motion';
 import HeroScrollVideoReveal from '@/components/ui/hero-scroll-video-pin-reveal';
+import ScrollMorphHero from '@/components/ui/scroll-morph-hero';
 
 const projects = [
   {
@@ -114,6 +115,8 @@ const projectNotes: Record<string, string> = {
   'Python Algorithm Lab': 'A little logic',
 };
 
+const projectId = (name: string) => `project-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+
 const disciplines = [
   { icon: Code2, label: 'Product engineering', copy: 'Responsive interfaces, interactive prototypes, APIs, and practical data layers.' },
   { icon: ShieldCheck, label: 'Secure thinking', copy: 'Accessible controls, tested logic, documented choices, and sensible defaults.' },
@@ -199,9 +202,20 @@ export default function Home() {
           <a data-reveal="up" href="https://github.com/pralav-25?tab=repositories" target="_blank" rel="noreferrer">View all repositories <ArrowUpRight aria-hidden="true" /></a>
         </div>
 
+        <ScrollMorphHero projects={projects.map((project) => ({
+          name: project.name,
+          number: project.number,
+          category: project.category,
+          image: project.image,
+          imageAlt: project.imageAlt,
+          featured: project.featured,
+          note: projectNotes[project.name],
+          href: project.featured ? '#shiftwatch' : `#${projectId(project.name)}`,
+        }))} />
+
         <div className="project-grid">
           {projects.map((project) => (
-            <article className={`project-card${project.featured ? ' project-featured' : ''}`} data-reveal="card" key={project.name} id={project.featured ? 'shiftwatch' : undefined}>
+            <article className={`project-card${project.featured ? ' project-featured' : ''}`} data-reveal="card" key={project.name} id={project.featured ? 'shiftwatch' : projectId(project.name)}>
               <span className="project-sticker" aria-hidden="true">{projectNotes[project.name]}</span>
               {!project.featured ? <span className="comic-impact" aria-hidden="true">POW!</span> : null}
               <a className="project-media" data-scroll-scene href={project.live ?? project.source} target="_blank" rel="noreferrer" aria-label={`Open ${project.name}`}>
