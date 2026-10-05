@@ -81,20 +81,20 @@ img { max-width: 100%; }
 .float-card:hover { z-index: 7; filter: saturate(1.12); }
 .float-card img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .hero-previews { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
-.hero-previews .float-card { width: clamp(100px, 13.2vw, 200px); aspect-ratio: 1.55; pointer-events: auto; transform: rotate(var(--card-tilt, 0deg)); }
+.hero-previews .float-card { width: var(--card-width); aspect-ratio: var(--card-aspect, 1.55); pointer-events: auto; transform: rotate(var(--card-tilt, 0deg)); }
 .hero-previews .float-card:hover { transform: rotate(var(--card-tilt, 0deg)) translateY(-8px); }
-.float-struct { --intro-x: 260px; --intro-y: 150px; --exit-x: -150px; --exit-y: -85px; --card-tilt: -1.5deg; left: 2.3%; top: 14%; }
-.float-interleave { --intro-x: 275px; --intro-y: 65px; --exit-x: -155px; --exit-y: -35px; --card-tilt: 2deg; left: 3%; top: 35%; }
-.float-flow { --intro-x: 285px; --intro-y: -135px; --exit-x: -165px; --exit-y: 115px; --card-tilt: 1deg; left: 1.6%; top: 56%; }
-.float-algorithms { --intro-x: 250px; --intro-y: -160px; --exit-x: -140px; --exit-y: 125px; --card-tilt: -2deg; left: 2.7%; top: 77%; }
-.float-edit { --intro-x: -275px; --intro-y: 145px; --exit-x: 145px; --exit-y: -90px; --card-tilt: -1deg; right: 2.3%; top: 12%; }
-.float-dataset { --intro-x: -260px; --intro-y: 90px; --exit-x: 150px; --exit-y: -50px; --card-tilt: 2deg; right: 3%; top: 30%; }
-.float-chroma { --intro-x: -285px; --intro-y: -45px; --exit-x: 160px; --exit-y: 45px; --card-tilt: -2deg; right: 1.6%; top: 48%; }
-.float-w4u { --intro-x: -285px; --intro-y: -145px; --exit-x: 175px; --exit-y: 120px; --card-tilt: 1.2deg; right: 2.7%; top: 66%; }
-.float-shiftwatch { --intro-x: -250px; --intro-y: -170px; --exit-x: 145px; --exit-y: 130px; --card-tilt: -1deg; right: 2.3%; top: 84%; background: var(--white); }
+.float-struct { --intro-x: 260px; --intro-y: 150px; --exit-x: -150px; --exit-y: -85px; --card-tilt: -8deg; --card-width: clamp(135px, 16vw, 230px); --card-aspect: 1.35; left: 4%; top: 16%; }
+.float-interleave { --intro-x: 140px; --intro-y: 160px; --exit-x: -65px; --exit-y: -120px; --card-tilt: 7deg; --card-width: clamp(104px, 10vw, 145px); --card-aspect: 1.6; left: 26%; top: 11%; }
+.float-flow { --intro-x: 285px; --intro-y: -135px; --exit-x: -165px; --exit-y: 115px; --card-tilt: -5deg; --card-width: clamp(125px, 15vw, 220px); --card-aspect: 1.45; left: 9%; top: 70%; }
+.float-algorithms { --intro-x: 130px; --intro-y: -160px; --exit-x: -90px; --exit-y: 125px; --card-tilt: 8deg; --card-width: clamp(100px, 11vw, 155px); --card-aspect: 1.6; left: 27%; top: 82%; }
+.float-edit { --intro-x: -275px; --intro-y: 145px; --exit-x: 145px; --exit-y: -90px; --card-tilt: 9deg; --card-width: clamp(140px, 14vw, 210px); --card-aspect: 1.4; right: 5%; top: 17%; }
+.float-dataset { --intro-x: 260px; --intro-y: 40px; --exit-x: -150px; --exit-y: -20px; --card-tilt: 6deg; --card-width: clamp(115px, 12vw, 185px); --card-aspect: 1.5; left: 2%; top: 46%; }
+.float-chroma { --intro-x: -285px; --intro-y: -45px; --exit-x: 160px; --exit-y: 45px; --card-tilt: -7deg; --card-width: clamp(135px, 16vw, 230px); --card-aspect: 1.45; right: 1.5%; top: 43%; }
+.float-w4u { --intro-x: -285px; --intro-y: -145px; --exit-x: 175px; --exit-y: 120px; --card-tilt: 6deg; --card-width: clamp(140px, 17vw, 245px); --card-aspect: 1.4; right: 4%; top: 72%; }
+.float-shiftwatch { --intro-x: -150px; --intro-y: -170px; --exit-x: 90px; --exit-y: 130px; --card-tilt: -6deg; --card-width: clamp(140px, 14vw, 210px); right: 22%; top: 87%; background: var(--white); }
 .hero-previews .float-shiftwatch { aspect-ratio: 2080 / 752; }
 .float-shiftwatch img { object-fit: contain; }
-.float-profile { --intro-x: -220px; --intro-y: 175px; --exit-x: 70px; --exit-y: -125px; right: 15%; top: 94px; width: 88px; height: 102px; transform: rotate(2.5deg); }
+.float-profile { --intro-x: -220px; --intro-y: 175px; --exit-x: 70px; --exit-y: -125px; right: 29%; top: 94px; width: 70px; height: 82px; transform: rotate(-11deg); }
 .float-profile img { filter: saturate(.75) contrast(1.04); }
 
 .ticker { overflow: hidden; border-block: 1px solid var(--ink); background: var(--paper); }
@@ -290,11 +290,15 @@ footer > div a:hover { color: var(--green); }
 
 @media (max-width: 1040px) {
   .site-header nav { gap: 22px; }
-  .hero-previews .float-card { width: clamp(100px, 14vw, 150px); }
-  .float-struct, .float-flow, .float-algorithms { left: 6px; }
-  .float-interleave { left: 8px; }
-  .float-edit, .float-chroma, .float-shiftwatch { right: 6px; }
-  .float-dataset, .float-w4u { right: 8px; }
+  .float-struct { --card-width: 16vw; left: 2%; }
+  .float-interleave { --card-width: 11vw; left: 26%; top: 11%; }
+  .float-flow { --card-width: 16vw; left: 5%; top: 69%; }
+  .float-algorithms { --card-width: 11vw; left: 23%; top: 84%; }
+  .float-edit { --card-width: 15vw; right: 3%; }
+  .float-dataset { --card-width: 12vw; left: 1%; top: 44%; }
+  .float-chroma { --card-width: 16vw; right: 1%; }
+  .float-w4u { --card-width: 17vw; right: 3%; top: 71%; }
+  .float-shiftwatch { --card-width: 15vw; right: 20%; top: 87%; }
   .float-profile { display: none; }
   .work-heading { grid-template-columns: 1fr 2fr; }
   .work-heading > a { grid-column: 2; justify-self: start; }
@@ -315,8 +319,18 @@ footer > div a:hover { color: var(--green); }
   .hero-kicker { max-width: 270px; margin-bottom: 15px; }
   .hero-intro { max-width: 390px; margin-top: 28px; line-height: 1.5; }
   .hero-cta { min-height: 48px; margin-top: 24px; }
-  .hero-previews { position: relative; inset: auto; order: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: min(420px, 100%); margin-top: 28px; }
-  .hero-previews .float-card, .motion-ready .hero-previews .float-card { --card-opacity: 1; position: relative; inset: auto; width: 100%; min-height: 44px; aspect-ratio: 1.55; opacity: 1; pointer-events: auto; translate: none; scale: 1; }
+  .hero-previews { position: relative; inset: auto; order: 2; width: min(420px, 100%); aspect-ratio: 1.16; margin-top: 34px; }
+  .hero-previews .float-card { position: absolute; inset: auto; min-height: 44px; }
+  .hero-previews .float-card, .motion-ready .hero-previews .float-card { --card-opacity: 1; opacity: 1; pointer-events: auto; translate: none; scale: 1; }
+  .hero-previews .float-struct { left: 2%; top: 2%; width: 30%; }
+  .hero-previews .float-flow { left: 37%; top: 5%; width: 26%; }
+  .hero-previews .float-w4u { left: 68%; top: 1%; width: 29%; }
+  .hero-previews .float-edit { left: 1%; top: 36%; width: 28%; }
+  .hero-previews .float-interleave { left: 33%; top: 41%; width: 32%; }
+  .hero-previews .float-dataset { left: 70%; top: 33%; width: 27%; }
+  .hero-previews .float-chroma { left: 0; top: 73%; width: 32%; }
+  .hero-previews .float-algorithms { left: 39%; top: 77%; width: 26%; }
+  .hero-previews .float-shiftwatch { left: 68%; top: 70%; width: 31%; }
   .hero-previews .float-card:hover { transform: rotate(var(--card-tilt, 0deg)); filter: none; }
   .float-profile { display: none; }
   .hero-status { bottom: max(16px, env(safe-area-inset-bottom)); width: min(max-content, calc(100% - 28px)); justify-content: center; text-align: center; font-size: 8px; }
