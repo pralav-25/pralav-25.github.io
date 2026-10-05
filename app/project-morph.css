@@ -1,4 +1,5 @@
 .project-card[id] { scroll-margin-top: 100px; }
+.motion-ready .project-media img { scale: 1; translate: none; will-change: auto; }
 
 /* The unenhanced navigator is also the mobile, reduced-motion, and no-JavaScript layout. */
 .work { --work-gutter: max(24px, calc((100vw - 1280px) / 2)); }
@@ -23,7 +24,7 @@
 .morph-scroll-note { display: block; margin-top: 24px; text-align: center; font-family: var(--font-geist-mono); font-size: 9px; font-weight: 700; text-transform: uppercase; }
 
 @media (min-width: 960px) and (min-height: 620px) and (prefers-reduced-motion: no-preference) {
-  .morph-enhanced { height: 260svh; }
+  .morph-enhanced { height: 190svh; }
   .morph-enhanced .morph-stage { position: sticky; top: 0; height: 100svh; padding: 0; }
   .morph-enhanced .morph-copy { position: absolute; z-index: 1; top: 50%; left: 50%; width: min(400px, 40%); margin: 0; translate: -50% -50%; pointer-events: none; }
   .morph-enhanced .morph-copy h3 { font-size: clamp(44px, min(7vw, 10svh), 92px); }
