@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './shadcn-theme.css';
 
 :root {
   --green: #63d679;

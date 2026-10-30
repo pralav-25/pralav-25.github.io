@@ -68,8 +68,37 @@ in the browser before publishing an update.
 
 ## Stack
 
-Next.js, React, TypeScript, Tailwind CSS, Framer Motion, and Lucide icons.
+Next.js, React, TypeScript, Tailwind CSS, Framer Motion, GSAP, and Lucide icons.
 The site is statically generated, validated through GitHub Actions, and deployed through Vercel.
+
+## UI components and parallax
+
+The project already uses TypeScript, Tailwind CSS 4, and the `@/*` import alias.
+Reusable UI belongs in `components/ui/`; global styles start at `app/globals.css`.
+`components.json` points the shadcn CLI at these existing paths, and
+`lib/utils.ts` supplies `cn()`. Semantic shadcn theme tokens live in
+`app/shadcn-theme.css`, imported through the global Tailwind entry point.
+No new app scaffold or Tailwind/TypeScript installation is needed. To add a
+shadcn component later, run `pnpm dlx shadcn@latest add <component>`.
+
+`components/ui/parallax-scrolling.tsx` adapts the supplied layered scene for the
+About panel. Its styles live in `app/parallax-scrolling.css`. It uses a scoped
+GSAP ScrollTrigger with native scrolling; phones and reduced-motion preferences
+receive the static composition. Cleanup reverts only this component's animations.
+The existing film reveal is independent.
+
+`components/demos/parallax-demo.tsx` is a standalone usage example, not an extra
+public page. It includes the optional page-level `SmoothScroll` owner from
+`components/smooth-scroll.tsx`. Lenis runs from a named GSAP ticker callback,
+which is removed on cleanup, and is disabled for reduced motion. The portfolio
+does not mount this owner, preserving its existing native scroll behavior.
+The supplied `@studio-freight/lenis` dependency is now named
+[`lenis`](https://github.com/darkroomengineering/lenis#installation).
+
+The three supplied scene layers are served locally, unchanged, from
+`public/parallax/`. The visible panel retains the supplied
+[Osmo resource credit](https://www.osmo.supply/); the landscape is decorative,
+not a portrait or location claim about Pralav.
 
 The project navigator in `components/ui/scroll-morph-hero.tsx` uses the same project
 data as the detail cards. Its full-width section uses one circle-to-arc transition
