@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="850" viewBox="0 0 1280 850" role="img" aria-labelledby="title description">
+  <title id="title">RepoSentry workflow overview</title>
+  <desc id="description">RepoSentry checks exact direct Python, npm, and Maven dependency versions from a public GitHub repository against published OSV advisories. Review findings with severity filters, save scan history locally, and export CSV.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#132c47"/>
+      <stop offset="1" stop-color="#08131f"/>
+    </linearGradient>
+    <linearGradient id="tile" x1="32" y1="16" x2="226" y2="244" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#183660"/>
+      <stop offset="1" stop-color="#101c33"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="75" y1="45" x2="174" y2="214" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#75f1db"/>
+      <stop offset="1" stop-color="#32cfaf"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#547083" opacity=".15"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1 1 6 4 1 7" fill="none" stroke="#75f1db" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="850" fill="url(#background)"/>
+  <rect width="1280" height="850" fill="url(#dots)"/>
+  <g transform="translate(68 64) scale(.4)">
+    <rect x="12" y="12" width="232" height="232" rx="66" fill="url(#tile)"/>
+    <path d="m128 39 66 25v53c0 45-26 78-66 101-40-23-66-56-66-101V64Z" fill="url(#shield)"/>
+    <path d="m128 57 50 19v41c0 33-17 58-50 78-33-20-50-45-50-78V76Z" fill="#142a4b"/>
+    <path d="m98 126 20 20 42-45" fill="none" stroke="#75f1db" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="195" cy="65" r="7" fill="#75f1db"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="188" y="137" fill="#f0f7fa" font-size="66" font-weight="700" letter-spacing="-2">RepoSentry</text>
+    <rect x="911" y="92" width="297" height="45" rx="22.5" fill="#133f42" stroke="#39766f"/>
+    <text x="1059.5" y="122" text-anchor="middle" fill="#a8f5e3" font-size="19" font-weight="700" letter-spacing="1">WORKFLOW OVERVIEW</text>
+    <text x="76" y="221" fill="#b4cad7" font-size="32">From pinned dependencies to published advisories.</text>
+  </g>
+  <g fill="none" stroke="#75f1db" stroke-width="2.5" marker-end="url(#arrow)">
+    <path d="M333 454H359"/>
+    <path d="M625 454H651"/>
+    <path d="M917 454H943"/>
+  </g>
+  <g fill="#0d1f31" stroke="#355269" stroke-width="1.5">
+    <rect x="72" y="307" width="260" height="294" rx="20"/>
+    <rect x="364" y="307" width="260" height="294" rx="20"/>
+    <rect x="656" y="307" width="260" height="294" rx="20"/>
+    <rect x="948" y="307" width="260" height="294" rx="20"/>
+  </g>
+  <g font-family="Consolas, Menlo, Monaco, monospace" font-size="18" fill="#6e9db5">
+    <text x="98" y="344">01 / FETCH</text>
+    <text x="390" y="344">02 / PARSE</text>
+    <text x="682" y="344">03 / CHECK</text>
+    <text x="974" y="344">04 / REVIEW</text>
+  </g>
+  <g fill="none" stroke="#75f1db" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M103 377h29v54h-29zM132 387h25v44h-25M111 386h13M111 397h13M111 408h13M141 397h8M141 408h8"/>
+    <path d="m393 389 24-13 24 13v29l-24 13-24-13Zm0 0 24 13 24-13M417 402v29M405 382l24 14"/>
+    <path d="m713 376 26 10v19c0 15-11 26-26 34-15-8-26-19-26-34v-19Zm-12 29 9 9 16-18"/>
+    <path d="M981 380h43v49h-43zM991 393h23M991 404h23M991 415h13M1035 408v24m-7-7 7 7 7-7"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#edf5f9">
+    <text x="98" y="484">Public repository</text>
+    <text x="390" y="484">Exact direct pins</text>
+    <text x="682" y="484">OSV advisories</text>
+    <text x="974" y="484">Review &amp; export</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#a6bfce">
+    <text x="98" y="528">GitHub snapshot</text>
+    <text x="98" y="557">pinned to a commit</text>
+    <text x="390" y="528">Python · npm</text>
+    <text x="390" y="557">Maven</text>
+    <text x="682" y="528">Check declared</text>
+    <text x="682" y="557">package versions</text>
+    <text x="974" y="528">Inspect findings</text>
+    <text x="974" y="557">and open advisories</text>
+  </g>
+  <g fill="#112d3b" stroke="#2b5262">
+    <rect x="72" y="658" width="243" height="51" rx="25.5"/>
+    <rect x="333" y="658" width="263" height="51" rx="25.5"/>
+    <rect x="614" y="658" width="279" height="51" rx="25.5"/>
+    <rect x="911" y="658" width="297" height="51" rx="25.5"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#c9dee8" text-anchor="middle">
+    <text x="193.5" y="691">Severity filters</text>
+    <text x="464.5" y="691">Local scan history</text>
+    <text x="753.5" y="691">Search findings</text>
+    <text x="1059.5" y="691">CSV export</text>
+  </g>
+  <path d="M72 751H1208" stroke="#294456"/>
+  <g font-family="Consolas, Menlo, Monaco, monospace" font-size="20">
+    <text x="76" y="792" fill="#7f9cad">DESKTOP APP</text>
+    <text x="1204" y="792" text-anchor="end" fill="#9cb8c9">Python / Tkinter / Java / SQLite</text>
+  </g>
+</svg>

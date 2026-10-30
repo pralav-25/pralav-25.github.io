@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, Code2, Film, GitBranch, Mail, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Code2, Film, GitBranch, GitPullRequest, Mail, ShieldCheck, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import { EditingGallery } from '@/components/editing-gallery';
 import { ComicPlayground } from '@/components/comic-playground';
@@ -9,6 +9,28 @@ import ScrollMorphHero from '@/components/ui/scroll-morph-hero';
 const projects = [
   {
     number: '01',
+    name: 'RepoSentry',
+    category: 'New · October 2026 · Dependency security',
+    description: 'A desktop scanner that checks supported dependency versions in public GitHub repositories against OSV vulnerability advisories. Review findings with severity filters, revisit saved scan history, and export results to CSV.',
+    skills: ['Python', 'Tkinter', 'Java', 'SQLite', 'OSV'],
+    image: '/reposentry-card.svg',
+    imageAlt: 'RepoSentry workflow overview: public repository, supported pinned dependencies, OSV advisory lookup, and review or CSV export.',
+    source: 'https://github.com/pralav-25/RepoSentry',
+  },
+  {
+    number: '02',
+    name: 'Pairglass',
+    category: 'New · October 2026 · Model evaluation',
+    description: 'Compare paired evaluation CSVs to find subgroup regressions hidden by better overall averages. Inspect changed cases, export a self-contained HTML report, and run the same checks in GitHub Actions.',
+    skills: ['Python', 'Statistical evaluation', 'HTML reports', 'GitHub Actions'],
+    image: '/pairglass-card.png',
+    imageAlt: 'Pairglass evaluation report with paired model results, subgroup comparisons, and changed-case analysis using synthetic example data.',
+    source: 'https://github.com/pralav-25/pairglass',
+    live: 'https://pralav-25.github.io/pairglass/',
+    liveLabel: 'Sample report',
+  },
+  {
+    number: '03',
     name: 'ShiftWatch',
     category: 'Featured · Machine learning & data drift',
     description: 'A reproducible ML evaluation pipeline and interactive dashboard for spotting data drift. Compares three classifiers with five-fold cross-validation, then checks new data with PSI, KS tests, and missingness alerts. Includes a numerical CSV comparison CLI.',
@@ -22,16 +44,17 @@ const projects = [
     featured: true,
   },
   {
-    number: '02',
+    number: '04',
     name: 'StructIQ',
-    category: 'Infrastructure intelligence',
-    description: 'Predictive monitoring with a FastAPI service, SQLite data layer, asset diagnostics, and tested health scoring.',
-    skills: ['Python', 'FastAPI', 'SQLite'],
-    image: '/structiq-card.png',
+    category: 'Infrastructure maintenance workflows',
+    description: 'An infrastructure maintenance app with private workspaces, asset maps, incident reports, and validated photo uploads. Public reporting and status links connect maintenance updates to a persistent audit history.',
+    skills: ['FastAPI', 'SQLAlchemy', 'PostgreSQL', 'Leaflet'],
+    image: '/structiq-workflow-card.svg',
+    imageAlt: 'StructIQ workflow overview: private workspaces, asset maps, incident and photo reports, public tracking, and audit history.',
     source: 'https://github.com/pralav-25/StructIQ',
   },
   {
-    number: '03',
+    number: '05',
     name: 'Websites4U',
     category: 'Agency product experience',
     description: 'A distinct web-agency concept with service discovery, a project estimator, accessible navigation, and a lead flow.',
@@ -41,7 +64,7 @@ const projects = [
     live: 'https://w4u-indol.vercel.app',
   },
   {
-    number: '04',
+    number: '06',
     name: 'FlowLock',
     category: 'Interactive API security',
     description: 'A visual product concept that explains behavior-based abuse detection and rate-limit bypass scenarios.',
@@ -51,7 +74,7 @@ const projects = [
     live: 'https://flow-lock-nine.vercel.app',
   },
   {
-    number: '05',
+    number: '07',
     name: 'Editing Portfolio',
     category: 'Creative technology',
     description: 'A responsive home for short-form, sports, and story-led video work, pairing React with visual editing practice.',
@@ -60,7 +83,7 @@ const projects = [
     source: 'https://github.com/pralav-25/Editing_Portfolio',
   },
   {
-    number: '06',
+    number: '08',
     name: 'Dataset Gate',
     category: 'Data quality & pipeline checks',
     description: 'Checks CSV datasets against versioned contracts, compares revisions, and records validation history. Includes a Python CLI, GitHub Actions support, an optional FastAPI service, and downloadable reports.',
@@ -70,18 +93,18 @@ const projects = [
     source: 'https://github.com/pralav-25/dataset-gate',
   },
   {
-    number: '07',
+    number: '09',
     name: 'Interleave',
     category: 'Interactive concurrency lab',
-    description: 'Explore concurrency bugs by stepping through worker operations, inspecting state, and replaying different schedules. Includes trace assistance and private saved investigations.',
-    skills: ['TypeScript', 'React', 'Concurrency', 'Cloudflare D1'],
+    description: 'Explore six deterministic concurrency experiments by stepping through operations, rewinding state, and sharing replay links. Includes optional browser-local AI assistance and private saved investigations.',
+    skills: ['TypeScript', 'React', 'WebLLM', 'Cloudflare D1'],
     image: '/interleave-card.webp',
     imageAlt: 'Interleave workbench showing two workers, a shared counter, and a lost-update execution trace.',
     source: 'https://github.com/pralav-25/interleave',
     live: 'https://interleave-pralav.vercel.app',
   },
   {
-    number: '08',
+    number: '10',
     name: 'CHROMA',
     category: 'Creative coding & WebGL',
     description: 'A browser shader studio with live palette controls, undo and redo, local collections, and high-resolution PNG export. Save and share design settings as portable JSON.',
@@ -92,7 +115,7 @@ const projects = [
     live: 'https://chroma-tawny.vercel.app/',
   },
   {
-    number: '09',
+    number: '11',
     name: 'Python Algorithm Lab',
     category: 'Algorithms & tested Python',
     description: 'Readable algorithm implementations with runnable examples, documented assumptions, and independent regression tests. Includes study guides for the reasoning behind searching, sorting, graph, and dynamic-programming algorithms.',
@@ -104,6 +127,8 @@ const projects = [
 ];
 
 const projectNotes: Record<string, string> = {
+  RepoSentry: 'Check the dependencies',
+  Pairglass: 'Look past the average',
   ShiftWatch: 'Spot the shift',
   StructIQ: 'Look a little closer',
   Websites4U: 'Web, with personality',
@@ -123,7 +148,12 @@ const disciplines = [
   { icon: Film, label: 'Visual storytelling', copy: 'Editing, motion, hierarchy, and presentation that make the idea easier to understand.' },
 ];
 
-const ticker = ['React', 'TypeScript', 'FastAPI', 'Creative code', 'DaVinci Resolve'];
+const ticker = ['Python', 'React', 'TypeScript', 'FastAPI', 'Creative code', 'DaVinci Resolve'];
+const linkedinUrl = 'https://www.linkedin.com/in/pralavsingh';
+
+function LinkedInIcon() {
+  return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3.5 9v12h3V9h-3ZM10 9v12h3v-6.5c0-1.6.6-2.5 1.9-2.5 1.2 0 1.6.9 1.6 2.5V21h3v-7.4c0-3-1.5-4.9-3.8-4.9-1.3 0-2.3.6-2.9 1.5V9H10Z" /></svg>;
+}
 
 export default function Home() {
   return (
@@ -140,6 +170,7 @@ export default function Home() {
           </nav>
           <div className="header-actions">
             <a className="login-link" href="https://github.com/pralav-25" target="_blank" rel="noreferrer">GitHub</a>
+            <a className="linkedin-link" href={linkedinUrl} target="_blank" rel="noreferrer" aria-label="Pralav Singh on LinkedIn"><LinkedInIcon /><span>LinkedIn</span></a>
             <a className="contact-pill" href="mailto:singhpralav07@gmail.com">Contact <ArrowUpRight aria-hidden="true" /></a>
           </div>
         </header>
@@ -158,11 +189,11 @@ export default function Home() {
         </div>
 
         <div className="hero-previews">
-          <a className="float-card float-struct" href="https://github.com/pralav-25/StructIQ" target="_blank" rel="noreferrer" aria-label="View StructIQ">
-            <Image src="/structiq-card.png" alt="StructIQ project preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          <a className="float-card float-struct" href="https://github.com/pralav-25/RepoSentry" target="_blank" rel="noreferrer" aria-label="View RepoSentry">
+            <Image src="/reposentry-card.svg" alt="RepoSentry workflow overview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
           </a>
-          <a className="float-card float-flow" href="https://flow-lock-nine.vercel.app" target="_blank" rel="noreferrer" aria-label="View FlowLock">
-            <Image src="/flowlock-card.png" alt="FlowLock project preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
+          <a className="float-card float-flow" href="https://pralav-25.github.io/pairglass/" target="_blank" rel="noreferrer" aria-label="View Pairglass sample report">
+            <Image src="/pairglass-card.png" alt="Pairglass synthetic evaluation report preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
           </a>
           <a className="float-card float-w4u" href="https://w4u-indol.vercel.app" target="_blank" rel="noreferrer" aria-label="View Websites4U">
             <Image src="/w4u-card.png" alt="Websites4U project preview" fill sizes="(max-width: 760px) 33vw, (max-width: 1040px) 150px, 200px" />
@@ -230,13 +261,25 @@ export default function Home() {
                   <div aria-label={`${project.name} skills`}>{project.skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
                   <div>
                     <a href={project.source} target="_blank" rel="noreferrer">Code <GitBranch aria-hidden="true" /></a>
-                    {project.live ? <a href={project.live} target="_blank" rel="noreferrer">Live <ArrowUpRight aria-hidden="true" /></a> : null}
+                    {project.live ? <a href={project.live} target="_blank" rel="noreferrer">{project.liveLabel ?? 'Live'} <ArrowUpRight aria-hidden="true" /></a> : null}
                   </div>
                 </div>
               </div>
             </article>
           ))}
         </div>
+
+        <aside className="contribution-card" aria-labelledby="contribution-title">
+          <div className="contribution-heading">
+            <p className="section-label">Open source · October 2026</p>
+            <h3 id="contribution-title">A small fix. Merged upstream.</h3>
+          </div>
+          <div className="contribution-copy">
+            <span className="contribution-status"><GitPullRequest aria-hidden="true" /> Merged · 28 October 2026</span>
+            <p>Contributed a fix to filelock&apos;s asynchronous leak test so inspecting tracked objects avoids resolving lazy proxies while preserving Future and Task counting.</p>
+            <a href="https://github.com/tox-dev/filelock/pull/872" target="_blank" rel="noreferrer">View merged contribution · filelock #872 <ArrowUpRight aria-hidden="true" /></a>
+          </div>
+        </aside>
       </section>
 
       <HeroScrollVideoReveal />
@@ -261,7 +304,7 @@ export default function Home() {
           <h2 className="motion-lines" id="about-title" data-reveal="lines"><span>I care about how things work—</span><span>and how they feel.</span></h2>
           <p data-reveal="up">I&apos;m Pralav, a developer and video editor based in India. I move between engineering, interface design, API security, and visual storytelling to turn practical ideas into clear experiences.</p>
           <dl data-reveal="up">
-            <div><dt>13</dt><dd>Public repositories</dd></div>
+            <div><dt>{projects.length}</dt><dd>Selected projects</dd></div>
             <div><dt>2</dt><dd>Creative disciplines</dd></div>
             <div><dt>∞</dt><dd>Curiosity</dd></div>
           </dl>
@@ -291,6 +334,7 @@ export default function Home() {
         <div data-reveal="up">
           <a href="mailto:singhpralav07@gmail.com"><Mail aria-hidden="true" /> Email me</a>
           <a href="https://github.com/pralav-25" target="_blank" rel="noreferrer"><GitBranch aria-hidden="true" /> Follow the work</a>
+          <a href={linkedinUrl} target="_blank" rel="noreferrer"><LinkedInIcon /> Connect on LinkedIn</a>
         </div>
         <Sparkles className="contact-spark" aria-hidden="true" />
       </section>
@@ -298,7 +342,7 @@ export default function Home() {
       <footer>
         <a className="brand footer-brand" href="#top">PRALAV<sup>25</sup></a>
         <p>Developer · Editor · Problem solver</p>
-        <div><a href="mailto:singhpralav07@gmail.com">Email</a><a href="https://github.com/pralav-25">GitHub</a><a href="https://www.instagram.com/ig_sinisterrrr/">Instagram</a></div>
+        <div><a href="mailto:singhpralav07@gmail.com">Email</a><a href="https://github.com/pralav-25">GitHub</a><a href={linkedinUrl} target="_blank" rel="noreferrer">LinkedIn</a><a href="https://www.instagram.com/ig_sinisterrrr/">Instagram</a></div>
         <span>© 2026 Pralav Singh</span>
       </footer>
     </main>

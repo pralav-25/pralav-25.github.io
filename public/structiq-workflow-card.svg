@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="850" viewBox="0 0 1280 850" role="img" aria-labelledby="title description">
+  <title id="title">StructIQ maintenance workflow overview</title>
+  <desc id="description">An infrastructure maintenance portfolio demo with private workspaces, a searchable asset map, incident reports with validated photo attachments, public status tracking, maintenance notes, and audit history.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#171410"/>
+      <stop offset="1" stop-color="#090909"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".075"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1 1 6 4 1 7" fill="none" stroke="#ff6715" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="850" fill="url(#background)"/>
+  <rect width="1280" height="850" fill="url(#grid)"/>
+  <circle cx="1190" cy="34" r="210" fill="none" stroke="#ff6715" stroke-opacity=".08" stroke-width="70"/>
+  <circle cx="120" cy="116" r="48" fill="#eeeeea"/>
+  <g fill="none" stroke="#171717" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M104 142V92h31v50M96 142h48M113 104h12M113 116h12M113 128h12"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="188" y="137" fill="#f1f0eb" font-size="68" font-weight="800" letter-spacing="-3">StructIQ</text>
+    <rect x="911" y="92" width="297" height="45" rx="5" fill="#2b1a0f" stroke="#d75a16"/>
+    <text x="1059.5" y="122" text-anchor="middle" fill="#ff8846" font-size="19" font-weight="700" letter-spacing="1">WORKFLOW OVERVIEW</text>
+    <text x="76" y="221" fill="#b8b6b0" font-size="32">Infrastructure maintenance, from report to resolution.</text>
+  </g>
+  <g fill="none" stroke="#ff6715" stroke-width="2.5" marker-end="url(#arrow)">
+    <path d="M333 454H359"/>
+    <path d="M625 454H651"/>
+    <path d="M917 454H943"/>
+  </g>
+  <g fill="#111110" stroke="#3a3833" stroke-width="1.5">
+    <rect x="72" y="307" width="260" height="294" rx="8"/>
+    <rect x="364" y="307" width="260" height="294" rx="8"/>
+    <rect x="656" y="307" width="260" height="294" rx="8"/>
+    <rect x="948" y="307" width="260" height="294" rx="8"/>
+  </g>
+  <g font-family="Consolas, Menlo, Monaco, monospace" font-size="18" fill="#ff8846">
+    <text x="98" y="344">01 / ORGANIZE</text>
+    <text x="390" y="344">02 / LOCATE</text>
+    <text x="682" y="344">03 / REPORT</text>
+    <text x="974" y="344">04 / RESOLVE</text>
+  </g>
+  <g fill="none" stroke="#ff6715" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M102 393v-9a14 14 0 0 1 28 0v9m-34 0h40v37H96Zm20 13v12"/>
+    <path d="m393 383 17-6 18 6 17-6v45l-17 6-18-6-17 6Zm17-6v45m18-39v45"/>
+    <path d="M692 378h31l13 13v40h-44Zm31 0v14h13M702 403h24M702 414h16M739 410h15v15h-15m3-11h1"/>
+    <path d="M982 382h44v48h-44Zm10 12h11m-11 12h11m-11 12h11M1009 393l3 3 7-7m-10 16 3 3 7-7m-10 16 3 3 7-7"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#eeede8">
+    <text x="98" y="484">Workspace</text>
+    <text x="390" y="484">Asset map</text>
+    <text x="682" y="484">Incident reports</text>
+    <text x="974" y="484">Track &amp; resolve</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#aaa9a3">
+    <text x="98" y="528">Private accounts</text>
+    <text x="98" y="557">and asset registers</text>
+    <text x="390" y="528">Register and search</text>
+    <text x="390" y="557">infrastructure assets</text>
+    <text x="682" y="528">Validated photo files</text>
+    <text x="682" y="557">and selected priority</text>
+    <text x="974" y="528">Public status links</text>
+    <text x="974" y="557">and maintenance notes</text>
+  </g>
+  <g fill="#1a1713" stroke="#544030">
+    <rect x="72" y="658" width="243" height="51" rx="5"/>
+    <rect x="333" y="658" width="263" height="51" rx="5"/>
+    <rect x="614" y="658" width="279" height="51" rx="5"/>
+    <rect x="911" y="658" width="297" height="51" rx="5"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#d3c7bd" text-anchor="middle">
+    <text x="193.5" y="691">FastAPI</text>
+    <text x="464.5" y="691">SQLAlchemy</text>
+    <text x="753.5" y="691">Leaflet maps</text>
+    <text x="1059.5" y="691">Audit history</text>
+  </g>
+  <path d="M72 751H1208" stroke="#3c352f"/>
+  <g font-family="Consolas, Menlo, Monaco, monospace" font-size="20">
+    <text x="76" y="792" fill="#918a83">PORTFOLIO DEMO</text>
+    <text x="1204" y="792" text-anchor="end" fill="#bcb0a4">Python / JavaScript / PostgreSQL / SQLite</text>
+  </g>
+</svg>

@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin']
 export const metadata: Metadata = {
   metadataBase: new URL('https://pralav-singh-portfolio.vercel.app'),
   title: 'Pralav Singh — Developer & Creative Technologist',
-  description: 'Portfolio of Pralav Singh: responsive web products, interactive prototypes, API security concepts, and visual storytelling.',
+  description: 'Portfolio of Pralav Singh: Python developer tools, model evaluation, interactive web products, open-source contributions, and visual storytelling.',
   authors: [{ name: 'Pralav Singh', url: 'https://github.com/pralav-25' }],
   keywords: ['Pralav Singh', 'web developer', 'frontend developer', 'React', 'FastAPI', 'video editor', 'portfolio'],
   openGraph: {

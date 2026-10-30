@@ -62,6 +62,9 @@ img { max-width: 100%; }
 .site-header nav a::after, .login-link::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -5px; height: 2px; background: var(--green); transition: right 180ms ease; }
 .site-header nav a:hover::after, .login-link:hover::after { right: 0; }
 .header-actions { justify-self: end; display: flex; align-items: center; gap: 20px; font-family: var(--font-geist-mono); font-size: 12px; text-transform: uppercase; }
+.linkedin-link { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; }
+.linkedin-link svg { width: 16px; height: 16px; }
+.linkedin-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .contact-pill { min-height: 43px; display: inline-flex; align-items: center; gap: 10px; border-radius: 999px; background: var(--ink); color: var(--white); padding: 0 18px; }
 .contact-pill svg { width: 16px; }
 
@@ -124,6 +127,7 @@ img { max-width: 100%; }
 .project-media:focus-visible { outline-color: var(--ink); outline-offset: 5px; }
 .project-media img { width: 100%; height: 100%; display: block; object-fit: cover; filter: saturate(.7) contrast(1.03); transition: filter 220ms ease; }
 .project-media:hover img, .project-media:focus-visible img { filter: saturate(1); }
+#project-pairglass .project-media img { object-position: top; }
 .project-number { position: absolute; left: 14px; top: 14px; display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--ink); border-radius: 50%; background: var(--project-accent); color: var(--ink); box-shadow: 2px 2px 0 var(--ink); font-family: var(--font-geist-mono); font-size: 10px; font-weight: 700; }
 .project-copy { display: grid; gap: 22px; padding: 24px 4px 0; }
 .project-copy > div:first-child { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
@@ -151,6 +155,14 @@ img { max-width: 100%; }
 .project-featured .project-foot > div:last-child { gap: 20px; }
 .project-featured .project-foot a { min-height: 44px; font-size: 14px; }
 .project-featured .project-foot span { font-size: 12px; }
+
+.contribution-card { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; margin-top: 64px; border: 2px solid var(--ink); border-radius: 16px; background: #e7dbfa; padding: clamp(24px, 4vw, 48px); box-shadow: 4px 4px 0 var(--ink); }
+.contribution-heading h3 { max-width: 460px; margin: 18px 0 0; font-size: clamp(2rem, 3.5vw, 3.5rem); line-height: 1.02; letter-spacing: -.06em; }
+.contribution-status { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--ink); border-radius: 999px; background: #fffefa; padding: 8px 12px; font-family: var(--font-geist-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.contribution-status svg { width: 15px; height: 15px; }
+.contribution-copy p { margin: 20px 0 14px; font-size: 15px; line-height: 1.65; }
+.contribution-copy > a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 12px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.contribution-copy > a svg { flex: 0 0 16px; width: 16px; height: 16px; }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 761px) {
   .project-media:hover { transform: translateY(-3px) rotate(var(--project-tilt)); box-shadow: 2px 4px 0 var(--ink); }
@@ -285,7 +297,7 @@ img { max-width: 100%; }
 footer { display: grid; grid-template-columns: 1.2fr 1fr 1fr auto; align-items: end; gap: 28px; background: var(--ink); color: var(--white); padding: 60px max(24px, calc((100vw - 1280px) / 2)) 36px; }
 .footer-brand { font-size: 46px; }
 footer p, footer span { margin: 0; color: #aaa9a1; font-family: var(--font-geist-mono); font-size: 9px; text-transform: uppercase; }
-footer > div { display: flex; gap: 20px; font-family: var(--font-geist-mono); font-size: 10px; text-transform: uppercase; }
+footer > div { display: flex; flex-wrap: wrap; gap: 16px; font-family: var(--font-geist-mono); font-size: 10px; text-transform: uppercase; }
 footer > div a:hover { color: var(--green); }
 
 @media (max-width: 1040px) {
@@ -312,6 +324,9 @@ footer > div a:hover { color: var(--green); }
   .hero { min-height: max(700px, 100svh); padding: 118px 18px max(82px, calc(66px + env(safe-area-inset-bottom))); }
   .site-header { top: max(10px, env(safe-area-inset-top)); width: calc(100% - 20px); height: 54px; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 6px 8px 6px 16px; }
   .site-header nav, .login-link { display: none; }
+  .linkedin-link { justify-content: center; min-width: 40px; }
+  .linkedin-link span { display: none; }
+  .header-actions { gap: 8px; }
   .contact-pill { min-height: 40px; padding-inline: 15px; }
   .hero-center { order: 1; width: 100%; }
   .hero h1 { width: 100%; max-width: 100%; font-size: clamp(3rem, 13vw, 6rem); line-height: .8; }
@@ -340,6 +355,7 @@ footer > div a:hover { color: var(--green); }
   .work-heading { grid-template-columns: 1fr; gap: 22px; margin-bottom: 48px; }
   .work-heading > a { grid-column: 1; }
   .project-grid { grid-template-columns: 1fr; gap: 46px; }
+  .contribution-card { grid-template-columns: 1fr; gap: 24px; margin-top: 46px; }
   .project-card { border-radius: 18px; padding: 14px; }
   .project-sticker { top: -13px; right: 20px; max-width: calc(100% - 40px); font-size: 9px; }
   .project-copy { gap: 18px; padding-top: 19px; }

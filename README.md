@@ -19,8 +19,10 @@ capabilities, and creative work with direct links to source code and live demos.
 
 | Project | Focus |
 | --- | --- |
+| [RepoSentry](https://github.com/pralav-25/RepoSentry) | Desktop dependency scanner with OSV advisory lookups, severity filters, SQLite scan history, and CSV export |
+| [Pairglass](https://github.com/pralav-25/pairglass) · [Synthetic sample report](https://pralav-25.github.io/pairglass/) | Paired model evaluation, subgroup regressions, changed-case inspection, offline HTML reports, and CI checks |
 | [ShiftWatch](https://github.com/pralav-25/shiftwatch) · [Live demo](https://pralav-25.github.io/shiftwatch/) | Reproducible ML evaluation, statistical data drift checks, a CSV CLI, and an interactive React dashboard |
-| [StructIQ](https://github.com/pralav-25/StructIQ) | FastAPI, SQLite, infrastructure health scoring, and tests |
+| [StructIQ](https://github.com/pralav-25/StructIQ) | FastAPI maintenance workflows, private workspaces, asset maps, incident/photo reporting, public status links, and audit history |
 | [Websites4U](https://github.com/pralav-25/w4u) | Responsive product experience and accessible lead flow |
 | [FlowLock](https://github.com/pralav-25/FlowLock) | Interactive API-security concept |
 | [Editing Portfolio](https://github.com/pralav-25/Editing_Portfolio) | React, TypeScript, and visual storytelling |
@@ -32,6 +34,11 @@ capabilities, and creative work with direct links to source code and live demos.
 ShiftWatch's featured chart is copied from its [reproducible experiment results](https://github.com/pralav-25/shiftwatch/blob/main/docs/experiment-results.png) (MIT license). The displayed shifts are synthetic stress tests on 54 held-out UCI Wine rows; results are not production-impact claims.
 
 Dataset Gate and Interleave previews use their repositories' report and workbench screenshots. The CHROMA preview is captured from its live studio. Python Algorithm Lab uses an illustration of the binary-search example from its README.
+
+The Pairglass preview is its published synthetic example report. RepoSentry and
+StructIQ use labelled workflow illustrations based on their implemented features.
+The October 2026 update also highlights [filelock PR #872](https://github.com/tox-dev/filelock/pull/872),
+merged on 28 October 2026.
 
 ## Local development
 
@@ -71,7 +78,7 @@ Phones and reduced-motion preferences receive a compact static navigator.
 
 ## Contact
 
-[Email](mailto:singhpralav07@gmail.com) · [GitHub](https://github.com/pralav-25)
+[Email](mailto:singhpralav07@gmail.com) · [GitHub](https://github.com/pralav-25) · [LinkedIn](https://www.linkedin.com/in/pralavsingh)
 
 ## License
 
