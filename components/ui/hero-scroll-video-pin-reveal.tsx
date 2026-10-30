@@ -22,7 +22,7 @@ const smoothRange = (value: number, start: number, end: number) => {
 };
 
 function headlineLines(heading: string, compact: boolean) {
-  if (heading === 'In motion.') return ['MOTION'];
+  if (heading === 'In motion.') return ['IN MOTION.'];
   const words = heading.toUpperCase().split(/\s+/);
   const target = Math.ceil(heading.length / (compact ? 3 : 2));
   const lines: string[] = [];
@@ -35,7 +35,7 @@ function headlineLines(heading: string, compact: boolean) {
 }
 
 export default function HeroScrollVideoReveal({
-  eyebrow = 'In motion / Selected film',
+  eyebrow = 'Selected film',
   heading = 'In motion.',
   tags = [],
   videoSrc = '/andrewww-original.mp4',
@@ -57,8 +57,7 @@ export default function HeroScrollVideoReveal({
   const compact = size.width <= 760;
   const lines = useMemo(() => headlineLines(heading, compact), [heading, compact]);
   const longestLine = Math.max(...lines.map((line) => line.length));
-  const glyphWidth = heading === 'In motion.' ? .55 : .48;
-  const fontSize = Math.min(size.width * .86 / (longestLine * glyphWidth), size.height * .5 / lines.length);
+  const fontSize = Math.min(size.width * .86 / (longestLine * .48), size.height * .5 / lines.length);
   const lineHeight = fontSize * .94;
   const firstBaseline = size.height * .5 - (lines.length - 1) * lineHeight / 2 + fontSize * .43;
 

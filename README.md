@@ -103,8 +103,8 @@ blends the mask away to reveal the full frame. A short scroll-follow easing keep
 the transition smooth; the same video keeps playing throughout. Reduced-motion preferences receive
 a static full-frame presentation with the playback control.
 The cinematic title uses the bundled Anton font under its [SIL Open Font License](app/fonts/OFL-Anton.txt).
-The borderless MOTION cutout uses larger, tightly spaced lettering so more of the
-film is visible inside the title. Playback controls use quiet, unboxed icons and text.
+The borderless IN MOTION. cutout uses tightly spaced cinematic lettering.
+Playback controls use quiet, unboxed icons and text.
 The pinned sequence spans 480svh on desktop and 420svh on phones; the reveal
 finishes at 80% of that scroll travel so the transition has time to unfold.
 The background showcase plays the complete user-supplied `Andrewww.mp4`, served
