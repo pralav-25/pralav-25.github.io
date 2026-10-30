@@ -96,3 +96,10 @@ Run `pnpm typecheck`, `pnpm lint`, and `pnpm build` before submitting changes.
 The background reel has a visible play/pause control, pauses in hidden tabs, and
 starts paused for reduced-motion preferences. Selecting play is an explicit
 opt-in; embedded work samples keep their separate play controls.
+
+The editing reveal uses one continuous video behind an SVG text cutout. Scrolling
+enlarges the lettering into a solid glyph stroke until the footage fills the
+stage. The same video keeps playing throughout; reduced-motion preferences receive
+a static full-frame presentation with the playback control.
+The background showcase loops seconds 14.5–22.5 of the edit to avoid its black
+opening and closing frames; the original full selection remains in the gallery.
