@@ -103,9 +103,6 @@ blends the mask away to reveal the full frame. A short scroll-follow easing keep
 the transition smooth; the same video keeps playing throughout. Reduced-motion preferences receive
 a static full-frame presentation with the playback control.
 The cinematic title uses the bundled Anton font under its [SIL Open Font License](app/fonts/OFL-Anton.txt).
-Its message, “Every frame tells a story,” identifies the editing practice. A
-translucent white fill and crisp edge keep the video-filled letters readable on
-dark footage; this contrast layer dissolves with the mask for the full reveal.
 The pinned sequence spans 480svh on desktop and 420svh on phones; the reveal
 finishes at 80% of that scroll travel so the transition has time to unfold.
 The background showcase plays the complete user-supplied `Andrewww.mp4`, served
