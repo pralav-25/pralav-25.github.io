@@ -5,6 +5,7 @@ import './comic.css';
 import './comic-panels.css';
 import './comic-fun.css';
 import './project-morph.css';
+import './portfolio-updates.css';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
