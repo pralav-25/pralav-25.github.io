@@ -68,10 +68,10 @@ in the browser before publishing an update.
 
 ## Stack
 
-Next.js, React, TypeScript, Tailwind CSS, Framer Motion, GSAP, and Lucide icons.
+Next.js, React, TypeScript, Tailwind CSS, Framer Motion, and Lucide icons.
 The site is statically generated, validated through GitHub Actions, and deployed through Vercel.
 
-## UI components and parallax
+## UI components and About artwork
 
 The project already uses TypeScript, Tailwind CSS 4, and the `@/*` import alias.
 Reusable UI belongs in `components/ui/`; global styles start at `app/globals.css`.
@@ -81,24 +81,18 @@ Reusable UI belongs in `components/ui/`; global styles start at `app/globals.css
 No new app scaffold or Tailwind/TypeScript installation is needed. To add a
 shadcn component later, run `pnpm dlx shadcn@latest add <component>`.
 
-`components/ui/parallax-scrolling.tsx` adapts the supplied layered scene for the
-About panel. Its styles live in `app/parallax-scrolling.css`. It uses a scoped
-GSAP ScrollTrigger with native scrolling; phones and reduced-motion preferences
-receive the static composition. Cleanup reverts only this component's animations.
-The existing film reveal is independent.
+`components/ui/about-workbench.tsx` is a custom composition for Pralav's About
+panel. Its styles live in `app/about-workbench.css`. The CODE / CUT / REPEAT
+lettering sits between a real CHROMA interface preview and a still from the
+user-supplied Andrewww edit. Each preview links to the corresponding work.
+The artwork uses the portfolio's ink, green, and yellow palette, without the
+third-party landscape, demo layout, or external scene assets.
 
-`components/demos/parallax-demo.tsx` is a standalone usage example, not an extra
-public page. It includes the optional page-level `SmoothScroll` owner from
-`components/smooth-scroll.tsx`. Lenis runs from a named GSAP ticker callback,
-which is removed on cleanup, and is disabled for reduced motion. The portfolio
-does not mount this owner, preserving its existing native scroll behavior.
-The supplied `@studio-freight/lenis` dependency is now named
-[`lenis`](https://github.com/darkroomengineering/lenis#installation).
-
-The three supplied scene layers are served locally, unchanged, from
-`public/parallax/`. The visible panel retains the supplied
-[Osmo resource credit](https://www.osmo.supply/); the landscape is decorative,
-not a portrait or location claim about Pralav.
+A small native scroll handler moves the two artwork planes at different depths.
+It runs only while the panel is nearby, batches updates with requestAnimationFrame,
+and removes its own observers, listeners, and pending frame on unmount.
+Phones and reduced-motion preferences receive a static composition. The existing
+film reveal remains independent; no separate smooth-scroll library is needed.
 
 The project navigator in `components/ui/scroll-morph-hero.tsx` uses the same project
 data as the detail cards. Its full-width section uses one circle-to-arc transition

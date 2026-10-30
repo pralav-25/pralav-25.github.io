@@ -1,0 +1,53 @@
+.about-workbench { --workbench-depth: 0; position: relative; isolation: isolate; container-type: inline-size; display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; gap: 36px; min-width: 0; min-height: 650px; height: 100%; margin: 0; padding: 33px 30px 25px; overflow: clip; border-right: 3px solid var(--ink); background: #151813; color: var(--paper); }
+.workbench-grid { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(#a6bc9b0c 1px, transparent 1px), linear-gradient(90deg, #a6bc9b0c 1px, transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(180deg, #000, #0006 65%, transparent); pointer-events: none; }
+.workbench-header { position: relative; display: flex; align-items: center; gap: 18px; }
+.workbench-mark { font-size: 30px; line-height: 1; font-weight: 800; letter-spacing: -.09em; }
+.workbench-header > span:nth-child(2) { font-family: var(--font-geist-mono), monospace; font-size: 8px; line-height: 1.8; letter-spacing: .06em; text-transform: uppercase; color: #b6c2ae; }
+.workbench-cross { margin-left: auto; color: var(--green); font-size: 30px; line-height: 1; }
+.workbench-project { position: relative; z-index: 1; align-self: center; flex-shrink: 0; width: 96%; max-width: 460px; aspect-ratio: 2.1; display: flex; flex-direction: column; border: 1px solid #94a28a66; border-radius: 5px; overflow: hidden; background: #1a1c1b; box-shadow: 0 14px 35px #0006; transform: translate3d(calc(var(--workbench-depth) * -10px), calc(var(--workbench-depth) * -28px), 0) rotate(-6deg); }
+.workbench-project-bar { display: flex; align-items: center; gap: 8px; min-height: 28px; padding: 6px 10px; color: #d1dacb; font-family: var(--font-geist-mono), monospace; font-size: 7px; letter-spacing: .02em; text-transform: uppercase; }
+.workbench-project-bar svg, .workbench-film-label svg { flex-shrink: 0; width: 12px; height: 12px; }
+.workbench-project-bar svg:last-child, .workbench-film-label svg:last-child { margin-left: auto; }
+.workbench-project-image { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+.workbench-project-image img { object-fit: cover; object-position: 50% 82%; transition: transform 400ms ease; }
+.workbench-project:hover .workbench-project-image img { transform: scale(1.035); }
+.workbench-title { position: relative; z-index: 2; align-self: start; flex-shrink: 0; margin: 0 0 0 18px; font-family: var(--font-cinema), Impact, sans-serif; font-size: clamp(76px, 20cqi, 144px); font-weight: 400; line-height: .9; letter-spacing: -.005em; text-transform: uppercase; pointer-events: none; }
+.workbench-title > span { display: block; }
+.workbench-title > span:nth-child(2) { color: var(--green); }
+.workbench-title > span:last-child { color: #ffe66a; }
+.workbench-side-note { position: absolute; z-index: 2; top: 42%; right: 7%; writing-mode: vertical-rl; font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: #99a78f; }
+.workbench-film { position: relative; z-index: 3; align-self: center; flex-shrink: 0; width: 98%; max-width: 460px; aspect-ratio: 2.4; display: flex; flex-direction: column; padding: 9px 9px 0; border: 1px solid #5c6a50; border-radius: 2px; background: #22271d; box-shadow: 0 15px 32px #0006; transform: translate3d(calc(var(--workbench-depth) * 8px), calc(var(--workbench-depth) * 20px), 0) rotate(5deg); }
+.workbench-film-sprockets { position: absolute; left: 10px; right: 10px; top: -4px; height: 6px; background: repeating-linear-gradient(90deg, #d0d6c4 0 7px, transparent 7px 16px); opacity: .7; }
+.workbench-film-image { position: relative; flex: 1; min-height: 0; overflow: hidden; background: #0b0b0b; }
+.workbench-film-image img { object-fit: cover; object-position: center; }
+.workbench-film-play { position: absolute; inset: 0; display: grid; place-items: center; color: var(--paper); background: #0b0b0b12; transition: background 180ms ease; }
+.workbench-film-play svg { width: 34px; height: 34px; fill: currentColor; filter: drop-shadow(0 2px 8px #0009); }
+.workbench-film:hover .workbench-film-play { background: #0b0b0b44; }
+.workbench-film-label { display: flex; align-items: center; gap: 8px; min-height: 29px; padding: 6px 1px; color: #e0e7d7; font-family: var(--font-geist-mono), monospace; font-size: 7px; text-transform: uppercase; }
+.workbench-caption { position: relative; display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.workbench-caption > span:first-child { color: #aab6a0; font-size: 11px; line-height: 1.65; }
+.workbench-caption strong { color: var(--paper); font-size: 15px; font-weight: 500; }
+.workbench-signature { display: inline-flex; align-items: start; gap: 2px; color: var(--green); font-family: Georgia, serif; font-style: italic; font-size: 31px; line-height: 1; letter-spacing: -.1em; }
+.workbench-signature > span { font-family: var(--font-geist-sans), sans-serif; font-size: 18px; font-style: normal; letter-spacing: 0; }
+.about-workbench a:focus-visible { outline: 3px solid #ffe66a; outline-offset: 5px; }
+@media (max-width: 760px) {
+  .about-workbench { height: auto; min-height: 580px; gap: 28px; padding: 25px 24px 20px; border-right: 0; border-bottom: 3px solid var(--ink); }
+  .workbench-header { gap: 14px; }
+  .workbench-mark { font-size: 27px; }
+  .workbench-header > span:nth-child(2) { font-size: 7px; }
+  .workbench-project { aspect-ratio: 2.3; transform: rotate(-5deg); }
+  .workbench-project-bar { min-height: 25px; font-size: 6px; }
+  .workbench-title { margin-left: 10px; font-size: clamp(69px, 19cqi, 112px); }
+  .workbench-side-note { right: 8%; font-size: 7px; }
+  .workbench-film { aspect-ratio: 2.8; padding: 7px 7px 0; transform: rotate(4deg); }
+  .workbench-film-label { min-height: 24px; font-size: 6px; }
+  .workbench-film-label svg { width: 10px; height: 10px; }
+  .workbench-film-play svg { width: 26px; height: 26px; }
+  .workbench-caption > span:first-child { font-size: 10px; }
+  .workbench-caption strong { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-workbench * { transition: none !important; }
+  .workbench-project { transform: rotate(-5deg); }
+  .workbench-film { transform: rotate(4deg); }
+}

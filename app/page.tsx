@@ -5,7 +5,7 @@ import { ComicPlayground } from '@/components/comic-playground';
 import { ScrollMotion } from '@/components/scroll-motion';
 import HeroScrollVideoReveal from '@/components/ui/hero-scroll-video-pin-reveal';
 import ScrollMorphHero from '@/components/ui/scroll-morph-hero';
-import { ParallaxComponent } from '@/components/ui/parallax-scrolling';
+import { AboutWorkbench } from '@/components/ui/about-workbench';
 
 const projects = [
   {
@@ -296,7 +296,7 @@ export default function Home() {
       </section>
 
       <section className="about" id="about" aria-labelledby="about-title">
-        <ParallaxComponent className="about-parallax" />
+        <AboutWorkbench />
         <div className="about-copy">
           <p className="section-label" data-reveal="up">A little about me</p>
           <h2 className="motion-lines" id="about-title" data-reveal="lines"><span>I care about how things work—</span><span>and how they feel.</span></h2>
