@@ -98,8 +98,9 @@ starts paused for reduced-motion preferences. Selecting play is an explicit
 opt-in; embedded work samples keep their separate play controls.
 
 The editing reveal uses one continuous video behind an SVG text cutout. Scrolling
-enlarges the lettering into a solid glyph stroke until the footage fills the
-stage. The same video keeps playing throughout; reduced-motion preferences receive
+gently enlarges the centered lettering up to 1.8 times its initial size, then
+blends the mask away to reveal the full frame. A short scroll-follow easing keeps
+the transition smooth; the same video keeps playing throughout. Reduced-motion preferences receive
 a static full-frame presentation with the playback control.
 The background showcase plays the complete user-supplied `Andrewww.mp4`, served
 unchanged as `public/andrewww-original.mp4` on desktop and mobile. Its original

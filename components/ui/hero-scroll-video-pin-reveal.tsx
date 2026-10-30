@@ -15,9 +15,13 @@ export interface HeroScrollVideoRevealProps {
 }
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
+const smoothRange = (value: number, start: number, end: number) => {
+  const amount = clamp((value - start) / (end - start));
+  return amount * amount * (3 - 2 * amount);
+};
 
 function headlineLines(heading: string, compact: boolean) {
-  if (heading === 'In motion.') return ['IN', 'MOTION.'];
+  if (heading === 'In motion.') return ['IN MOTION.'];
   const words = heading.toUpperCase().split(/\s+/);
   const target = Math.ceil(heading.length / (compact ? 3 : 2));
   const lines: string[] = [];
@@ -46,7 +50,6 @@ export default function HeroScrollVideoReveal({
   const maskRef = useRef<SVGSVGElement>(null);
   const glyphGroupRef = useRef<SVGGElement>(null);
   const outlineRef = useRef<SVGGElement>(null);
-  const textRefs = useRef<Array<SVGTextElement | null>>([]);
   const [size, setSize] = useState({ width: 1440, height: 900 });
   const [playbackRequested, setPlaybackRequested] = useState<boolean | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -103,50 +106,52 @@ export default function HeroScrollVideoReveal({
     if (!section) return;
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const center = { x: size.width / 2, y: size.height / 2 };
-    let anchor = { ...center, width: fontSize * .18, height: fontSize };
-    // Zoom into a solid letter stroke, so the same footage naturally fills the stage.
-    const targetLine = lines.findLastIndex((line) => /[IHTE]/.test(line));
-    const target = textRefs.current[targetLine];
-    if (target && !preference.matches) {
-      const index = lines[targetLine].lastIndexOf('I') >= 0
-        ? lines[targetLine].lastIndexOf('I') : lines[targetLine].search(/[HTE]/);
-      if (index >= 0 && index < target.getNumberOfChars()) {
-        const glyph = target.getExtentOfChar(index);
-        anchor = { x: glyph.x + glyph.width / 2, y: glyph.y + glyph.height * .45, width: glyph.width, height: glyph.height };
-      }
-    }
-    const finalScale = Math.max(80, size.width / Math.max(anchor.width * .4, 1) * 1.2);
-    let frame = 0;
-    const update = () => {
+    const readProgress = () => {
       const rect = section.getBoundingClientRect();
       const travel = Math.max(section.offsetHeight - window.innerHeight, 1);
-      const progress = preference.matches ? 1 : clamp(-rect.top / travel);
-      const scale = finalScale ** progress;
-      const move = 1 - 1 / scale;
-      const x = anchor.x + (center.x - anchor.x) * move;
-      const y = anchor.y + (center.y - anchor.y) * move;
-      const transform = `translate(${x} ${y}) scale(${scale}) translate(${-anchor.x} ${-anchor.y})`;
+      return preference.matches ? 1 : clamp(-rect.top / travel);
+    };
+    const render = (progress: number) => {
+      const scale = 1 + .8 * smoothRange(progress, .1, .6);
+      const transform = `translate(${center.x} ${center.y}) scale(${scale}) translate(${-center.x} ${-center.y})`;
       glyphGroupRef.current?.setAttribute('transform', transform);
       outlineRef.current?.setAttribute('transform', transform);
-      // Dissolve the final edges after the glyph has grown beyond the viewport.
-      if (maskRef.current) maskRef.current.style.opacity = String(1 - clamp((progress - .88) / .12));
+      if (outlineRef.current) outlineRef.current.style.opacity = String(1 - smoothRange(progress, .12, .35));
+      if (maskRef.current) maskRef.current.style.opacity = String(1 - smoothRange(progress, .18, .6));
       section.style.setProperty('--pin-progress', progress.toFixed(4));
-      frame = 0;
+    };
+    let targetProgress = readProgress();
+    let progress = targetProgress;
+    let frame = 0;
+    let previousTime = 0;
+    const animate = (time: number) => {
+      const elapsed = previousTime ? Math.min(time - previousTime, 64) : 16.67;
+      previousTime = time;
+      progress = preference.matches ? targetProgress
+        : progress + (targetProgress - progress) * (1 - Math.exp(-elapsed / 90));
+      if (Math.abs(targetProgress - progress) < .0001) progress = targetProgress;
+      render(progress);
+      if (progress !== targetProgress) frame = window.requestAnimationFrame(animate);
+      else {
+        frame = 0;
+        previousTime = 0;
+      }
     };
     const requestUpdate = () => {
-      if (!frame) frame = window.requestAnimationFrame(update);
+      targetProgress = readProgress();
+      if (!frame) frame = window.requestAnimationFrame(animate);
     };
     window.addEventListener('scroll', requestUpdate, { passive: true });
     window.addEventListener('resize', requestUpdate, { passive: true });
     preference.addEventListener('change', requestUpdate);
-    update();
+    render(progress);
     return () => {
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
       preference.removeEventListener('change', requestUpdate);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, [lines, size, fontSize]);
+  }, [size]);
 
   return (
     <section className="reel-reveal reel-type-reveal" id="editing" ref={sectionRef} aria-labelledby="reel-reveal-title">
@@ -170,13 +175,13 @@ export default function HeroScrollVideoReveal({
             <mask id={maskId} x="0" y="0" width={size.width} height={size.height} maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" style={{ maskType: 'luminance' }}>
               <rect width={size.width} height={size.height} fill="white" />
               <g ref={glyphGroupRef} fill="black">
-                {lines.map((line, index) => <text key={line} ref={(element) => { textRefs.current[index] = element; }} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="950" fontSize={fontSize} letterSpacing={-fontSize * .055}>{line}</text>)}
+                {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="950" fontSize={fontSize} letterSpacing={-fontSize * .055}>{line}</text>)}
               </g>
             </mask>
           </defs>
           <rect width={size.width} height={size.height} fill="#0b0b0b" mask={`url(#${maskId})`} />
           <g ref={outlineRef} fill="none" stroke="#f3f2ed" strokeOpacity=".24" strokeWidth=".65">
-            {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="950" fontSize={fontSize} letterSpacing={-fontSize * .055}>{line}</text>)}
+            {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="950" fontSize={fontSize} letterSpacing={-fontSize * .055} vectorEffect="non-scaling-stroke">{line}</text>)}
           </g>
         </svg>
         <div className="reel-type-intro">
