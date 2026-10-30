@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { ArrowUpRight, Pause, Play } from 'lucide-react';
 
 export interface HeroScrollVideoRevealProps {
   eyebrow?: string;
@@ -21,7 +22,7 @@ const smoothRange = (value: number, start: number, end: number) => {
 };
 
 function headlineLines(heading: string, compact: boolean) {
-  if (heading === 'In motion.') return ['IN MOTION.'];
+  if (heading === 'In motion.') return ['MOTION'];
   const words = heading.toUpperCase().split(/\s+/);
   const target = Math.ceil(heading.length / (compact ? 3 : 2));
   const lines: string[] = [];
@@ -34,7 +35,7 @@ function headlineLines(heading: string, compact: boolean) {
 }
 
 export default function HeroScrollVideoReveal({
-  eyebrow = 'Selected film',
+  eyebrow = 'In motion / Selected film',
   heading = 'In motion.',
   tags = [],
   videoSrc = '/andrewww-original.mp4',
@@ -49,7 +50,6 @@ export default function HeroScrollVideoReveal({
   const videoRef = useRef<HTMLVideoElement>(null);
   const maskRef = useRef<SVGSVGElement>(null);
   const glyphGroupRef = useRef<SVGGElement>(null);
-  const outlineRef = useRef<SVGGElement>(null);
   const [size, setSize] = useState({ width: 1440, height: 900 });
   const [playbackRequested, setPlaybackRequested] = useState<boolean | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -57,7 +57,8 @@ export default function HeroScrollVideoReveal({
   const compact = size.width <= 760;
   const lines = useMemo(() => headlineLines(heading, compact), [heading, compact]);
   const longestLine = Math.max(...lines.map((line) => line.length));
-  const fontSize = Math.min(size.width * .9 / (longestLine * .48), size.height * .5 / lines.length);
+  const glyphWidth = heading === 'In motion.' ? .55 : .48;
+  const fontSize = Math.min(size.width * .86 / (longestLine * glyphWidth), size.height * .5 / lines.length);
   const lineHeight = fontSize * .94;
   const firstBaseline = size.height * .5 - (lines.length - 1) * lineHeight / 2 + fontSize * .43;
 
@@ -115,7 +116,6 @@ export default function HeroScrollVideoReveal({
       const scale = 1 + .8 * smoothRange(progress, .12, .8);
       const transform = `translate(${center.x} ${center.y}) scale(${scale}) translate(${-center.x} ${-center.y})`;
       glyphGroupRef.current?.setAttribute('transform', transform);
-      outlineRef.current?.setAttribute('transform', transform);
       if (maskRef.current) maskRef.current.style.opacity = String(1 - smoothRange(progress, .24, .8));
       section.style.setProperty('--pin-progress', progress.toFixed(4));
     };
@@ -174,14 +174,11 @@ export default function HeroScrollVideoReveal({
             <mask id={maskId} x="0" y="0" width={size.width} height={size.height} maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" style={{ maskType: 'luminance' }}>
               <rect width={size.width} height={size.height} fill="white" />
               <g ref={glyphGroupRef} fill="black">
-                {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="var(--font-cinema), Impact, sans-serif" fontWeight="400" fontSize={fontSize} letterSpacing={fontSize * .025}>{line}</text>)}
+                {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="var(--font-cinema), Impact, sans-serif" fontWeight="400" fontSize={fontSize} letterSpacing={fontSize * .005}>{line}</text>)}
               </g>
             </mask>
           </defs>
           <rect width={size.width} height={size.height} fill="#0b0b0b" mask={`url(#${maskId})`} />
-          <g ref={outlineRef} fill="none" stroke="#f3f2ed" strokeOpacity=".82" strokeWidth={compact ? 1 : 1.4} strokeLinejoin="round">
-            {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="var(--font-cinema), Impact, sans-serif" fontWeight="400" fontSize={fontSize} letterSpacing={fontSize * .025} vectorEffect="non-scaling-stroke">{line}</text>)}
-          </g>
         </svg>
         <div className="reel-type-intro">
           <p>{eyebrow}</p>
@@ -195,9 +192,10 @@ export default function HeroScrollVideoReveal({
         </div>
         <div className="reel-type-controls">
           <button type="button" className="reel-motion-toggle" onClick={() => setPlaybackRequested(!isPlaying)} aria-pressed={isPlaying}>
+            {isPlaying ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
             {isPlaying ? 'Pause film' : 'Play film'}
           </button>
-          <a className="reel-motion-toggle" href={videoSrc} target="_blank" rel="noreferrer">Watch film ↗</a>
+          <a className="reel-motion-toggle" href={videoSrc} target="_blank" rel="noreferrer">Watch film <ArrowUpRight aria-hidden="true" /></a>
         </div>
         <span className="reel-reveal-progress" aria-hidden="true" />
       </div>
