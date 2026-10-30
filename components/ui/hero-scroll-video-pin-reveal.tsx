@@ -116,7 +116,6 @@ export default function HeroScrollVideoReveal({
       const transform = `translate(${center.x} ${center.y}) scale(${scale}) translate(${-center.x} ${-center.y})`;
       glyphGroupRef.current?.setAttribute('transform', transform);
       outlineRef.current?.setAttribute('transform', transform);
-      if (outlineRef.current) outlineRef.current.style.opacity = String(1 - smoothRange(progress, .2, .48));
       if (maskRef.current) maskRef.current.style.opacity = String(1 - smoothRange(progress, .24, .8));
       section.style.setProperty('--pin-progress', progress.toFixed(4));
     };
@@ -180,7 +179,7 @@ export default function HeroScrollVideoReveal({
             </mask>
           </defs>
           <rect width={size.width} height={size.height} fill="#0b0b0b" mask={`url(#${maskId})`} />
-          <g ref={outlineRef} fill="none" stroke="#f3f2ed" strokeOpacity=".24" strokeWidth=".65">
+          <g ref={outlineRef} fill="none" stroke="#f3f2ed" strokeOpacity=".82" strokeWidth={compact ? 1 : 1.4} strokeLinejoin="round">
             {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="var(--font-cinema), Impact, sans-serif" fontWeight="400" fontSize={fontSize} letterSpacing={fontSize * .025} vectorEffect="non-scaling-stroke">{line}</text>)}
           </g>
         </svg>
