@@ -21,7 +21,7 @@ const smoothRange = (value: number, start: number, end: number) => {
 };
 
 function headlineLines(heading: string, compact: boolean) {
-  if (heading === 'In motion.') return ['IN MOTION.'];
+  if (heading === 'Every frame tells a story.') return ['EVERY FRAME', 'TELLS A STORY.'];
   const words = heading.toUpperCase().split(/\s+/);
   const target = Math.ceil(heading.length / (compact ? 3 : 2));
   const lines: string[] = [];
@@ -34,8 +34,8 @@ function headlineLines(heading: string, compact: boolean) {
 }
 
 export default function HeroScrollVideoReveal({
-  eyebrow = 'Selected film',
-  heading = 'In motion.',
+  eyebrow = 'Video editing · Visual storytelling',
+  heading = 'Every frame tells a story.',
   tags = [],
   videoSrc = '/andrewww-original.mp4',
   mobileVideoSrc,
@@ -49,7 +49,7 @@ export default function HeroScrollVideoReveal({
   const videoRef = useRef<HTMLVideoElement>(null);
   const maskRef = useRef<SVGSVGElement>(null);
   const glyphGroupRef = useRef<SVGGElement>(null);
-  const outlineRef = useRef<SVGGElement>(null);
+  const contrastRef = useRef<SVGGElement>(null);
   const [size, setSize] = useState({ width: 1440, height: 900 });
   const [playbackRequested, setPlaybackRequested] = useState<boolean | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -115,8 +115,7 @@ export default function HeroScrollVideoReveal({
       const scale = 1 + .8 * smoothRange(progress, .12, .8);
       const transform = `translate(${center.x} ${center.y}) scale(${scale}) translate(${-center.x} ${-center.y})`;
       glyphGroupRef.current?.setAttribute('transform', transform);
-      outlineRef.current?.setAttribute('transform', transform);
-      if (outlineRef.current) outlineRef.current.style.opacity = String(1 - smoothRange(progress, .2, .48));
+      contrastRef.current?.setAttribute('transform', transform);
       if (maskRef.current) maskRef.current.style.opacity = String(1 - smoothRange(progress, .24, .8));
       section.style.setProperty('--pin-progress', progress.toFixed(4));
     };
@@ -180,7 +179,7 @@ export default function HeroScrollVideoReveal({
             </mask>
           </defs>
           <rect width={size.width} height={size.height} fill="#0b0b0b" mask={`url(#${maskId})`} />
-          <g ref={outlineRef} fill="none" stroke="#f3f2ed" strokeOpacity=".24" strokeWidth=".65">
+          <g ref={contrastRef} fill="white" fillOpacity=".46" stroke="white" strokeOpacity=".86" strokeWidth="1.1">
             {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="var(--font-cinema), Impact, sans-serif" fontWeight="400" fontSize={fontSize} letterSpacing={fontSize * .025} vectorEffect="non-scaling-stroke">{line}</text>)}
           </g>
         </svg>
