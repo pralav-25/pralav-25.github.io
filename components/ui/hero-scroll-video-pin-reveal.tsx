@@ -8,18 +8,16 @@ export interface HeroScrollVideoRevealProps {
   tags?: string[];
   videoSrc?: string;
   mobileVideoSrc?: string;
+  posterSrc?: string;
   title?: string;
   credit?: string;
   playbackRange?: { start: number; end: number } | null;
 }
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
-const showcaseRange = { start: 14.5, end: 22.5 };
 
 function headlineLines(heading: string, compact: boolean) {
-  if (heading === 'A cut should feel inevitable.') {
-    return compact ? ['A CUT', 'SHOULD FEEL', 'INEVITABLE.'] : ['A CUT SHOULD', 'FEEL INEVITABLE.'];
-  }
+  if (heading === 'In motion.') return ['IN', 'MOTION.'];
   const words = heading.toUpperCase().split(/\s+/);
   const target = Math.ceil(heading.length / (compact ? 3 : 2));
   const lines: string[] = [];
@@ -32,14 +30,15 @@ function headlineLines(heading: string, compact: boolean) {
 }
 
 export default function HeroScrollVideoReveal({
-  eyebrow = 'Creative practice · Editing',
-  heading = 'A cut should feel inevitable.',
-  tags = ['Story-led', 'Beat-synced', 'Short-form'],
-  videoSrc = '/rb22.mp4',
-  mobileVideoSrc = '/rb22-mobile.mp4',
-  title = 'Motion with purpose.',
-  credit = 'Original edit · Sinister_editzz',
-  playbackRange = showcaseRange,
+  eyebrow = 'Selected film',
+  heading = 'In motion.',
+  tags = [],
+  videoSrc = '/andrewww-original.mp4',
+  mobileVideoSrc,
+  posterSrc = '/andrewww-poster.png',
+  title = 'Andrewww',
+  credit = 'An edit by Sinister_editzz',
+  playbackRange = null,
 }: HeroScrollVideoRevealProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -162,8 +161,8 @@ export default function HeroScrollVideoReveal({
             const video = event.currentTarget;
             if (playbackRange && video.duration > playbackRange.start && video.currentTime >= Math.min(playbackRange.end, video.duration)) video.currentTime = playbackRange.start;
           }}
-          muted loop playsInline preload="metadata" poster="/edit-redbull.jpg" aria-hidden="true">
-          <source src={mobileVideoSrc} media="(max-width: 760px)" type="video/mp4" />
+          muted loop playsInline preload="metadata" poster={posterSrc} aria-hidden="true">
+          {mobileVideoSrc ? <source src={mobileVideoSrc} media="(max-width: 760px)" type="video/mp4" /> : null}
           <source src={videoSrc} type="video/mp4" />
         </video>
         <svg className="reel-type-mask" ref={maskRef} viewBox={`0 0 ${size.width} ${size.height}`} aria-hidden="true" focusable="false">
@@ -176,24 +175,26 @@ export default function HeroScrollVideoReveal({
             </mask>
           </defs>
           <rect width={size.width} height={size.height} fill="#0b0b0b" mask={`url(#${maskId})`} />
-          <g ref={outlineRef} fill="none" stroke="#f3f2ed" strokeOpacity=".32" strokeWidth=".65">
+          <g ref={outlineRef} fill="none" stroke="#f3f2ed" strokeOpacity=".24" strokeWidth=".65">
             {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="950" fontSize={fontSize} letterSpacing={-fontSize * .055}>{line}</text>)}
           </g>
         </svg>
         <div className="reel-type-intro">
           <p>{eyebrow}</p>
-          <div aria-label="Editing strengths">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-          <span className="reel-type-hint">Scroll into the story ↓</span>
+          {tags.length ? <div aria-label="Editing strengths">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div> : null}
+          <span className="reel-type-hint">Scroll to reveal ↓</span>
         </div>
-        <div className="reel-type-shade" aria-hidden="true" />
         <div className="reel-reveal-outro">
           <span>{credit}</span>
           <strong>{title}</strong>
-          <p>Keep scrolling to play the full selection.</p>
+          <p>More films below.</p>
         </div>
-        <button type="button" className="reel-motion-toggle" onClick={() => setPlaybackRequested(!isPlaying)} aria-pressed={isPlaying}>
-          {isPlaying ? 'Pause background video' : 'Play background video'}
-        </button>
+        <div className="reel-type-controls">
+          <button type="button" className="reel-motion-toggle" onClick={() => setPlaybackRequested(!isPlaying)} aria-pressed={isPlaying}>
+            {isPlaying ? 'Pause film' : 'Play film'}
+          </button>
+          <a className="reel-motion-toggle" href={videoSrc} target="_blank" rel="noreferrer">Watch film ↗</a>
+        </div>
         <span className="reel-reveal-progress" aria-hidden="true" />
       </div>
     </section>

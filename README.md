@@ -101,5 +101,10 @@ The editing reveal uses one continuous video behind an SVG text cutout. Scrollin
 enlarges the lettering into a solid glyph stroke until the footage fills the
 stage. The same video keeps playing throughout; reduced-motion preferences receive
 a static full-frame presentation with the playback control.
-The background showcase loops seconds 14.5–22.5 of the edit to avoid its black
-opening and closing frames; the original full selection remains in the gallery.
+The background showcase plays the complete user-supplied `Andrewww.mp4`, served
+unchanged as `public/andrewww-original.mp4` on desktop and mobile. Its original
+1920×978 resolution, 60 fps video, audio, and bitrate are preserved. The player
+uses `object-fit: contain` to retain the entire frame, with sound available on
+request. No smaller mobile encode or showcase trim is used.
+
+Original SHA-256: `efd000b41f6acdce6b5395957e0627ebf277a43ff08d6937926c0acf2faf2fe7`.
