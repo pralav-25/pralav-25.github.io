@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import './comic.css';
 import './comic-panels.css';
@@ -10,6 +11,7 @@ import './reel-text-reveal.css';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
+const cinema = localFont({ src: './fonts/Anton-Regular.ttf', variable: '--font-cinema', weight: '400', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pralav-singh-portfolio.vercel.app'),
@@ -34,5 +36,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body></html>;
+  return <html lang="en"><body className={`${geistSans.variable} ${geistMono.variable} ${cinema.variable}`}>{children}</body></html>;
 }

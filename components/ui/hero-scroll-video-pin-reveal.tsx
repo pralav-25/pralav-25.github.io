@@ -57,9 +57,9 @@ export default function HeroScrollVideoReveal({
   const compact = size.width <= 760;
   const lines = useMemo(() => headlineLines(heading, compact), [heading, compact]);
   const longestLine = Math.max(...lines.map((line) => line.length));
-  const fontSize = Math.min(size.width * .9 / (longestLine * .62), size.height * .5 / lines.length);
+  const fontSize = Math.min(size.width * .9 / (longestLine * .48), size.height * .5 / lines.length);
   const lineHeight = fontSize * .94;
-  const firstBaseline = size.height * .5 - (lines.length - 1) * lineHeight / 2 + fontSize * .34;
+  const firstBaseline = size.height * .5 - (lines.length - 1) * lineHeight / 2 + fontSize * .43;
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -112,12 +112,12 @@ export default function HeroScrollVideoReveal({
       return preference.matches ? 1 : clamp(-rect.top / travel);
     };
     const render = (progress: number) => {
-      const scale = 1 + .8 * smoothRange(progress, .1, .6);
+      const scale = 1 + .8 * smoothRange(progress, .12, .8);
       const transform = `translate(${center.x} ${center.y}) scale(${scale}) translate(${-center.x} ${-center.y})`;
       glyphGroupRef.current?.setAttribute('transform', transform);
       outlineRef.current?.setAttribute('transform', transform);
-      if (outlineRef.current) outlineRef.current.style.opacity = String(1 - smoothRange(progress, .12, .35));
-      if (maskRef.current) maskRef.current.style.opacity = String(1 - smoothRange(progress, .18, .6));
+      if (outlineRef.current) outlineRef.current.style.opacity = String(1 - smoothRange(progress, .2, .48));
+      if (maskRef.current) maskRef.current.style.opacity = String(1 - smoothRange(progress, .24, .8));
       section.style.setProperty('--pin-progress', progress.toFixed(4));
     };
     let targetProgress = readProgress();
@@ -175,13 +175,13 @@ export default function HeroScrollVideoReveal({
             <mask id={maskId} x="0" y="0" width={size.width} height={size.height} maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" style={{ maskType: 'luminance' }}>
               <rect width={size.width} height={size.height} fill="white" />
               <g ref={glyphGroupRef} fill="black">
-                {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="950" fontSize={fontSize} letterSpacing={-fontSize * .055}>{line}</text>)}
+                {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="var(--font-cinema), Impact, sans-serif" fontWeight="400" fontSize={fontSize} letterSpacing={fontSize * .025}>{line}</text>)}
               </g>
             </mask>
           </defs>
           <rect width={size.width} height={size.height} fill="#0b0b0b" mask={`url(#${maskId})`} />
           <g ref={outlineRef} fill="none" stroke="#f3f2ed" strokeOpacity=".24" strokeWidth=".65">
-            {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="950" fontSize={fontSize} letterSpacing={-fontSize * .055} vectorEffect="non-scaling-stroke">{line}</text>)}
+            {lines.map((line, index) => <text key={line} x={size.width / 2} y={firstBaseline + index * lineHeight} textAnchor="middle" fontFamily="var(--font-cinema), Impact, sans-serif" fontWeight="400" fontSize={fontSize} letterSpacing={fontSize * .025} vectorEffect="non-scaling-stroke">{line}</text>)}
           </g>
         </svg>
         <div className="reel-type-intro">

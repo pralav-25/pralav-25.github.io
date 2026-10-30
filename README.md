@@ -102,6 +102,9 @@ gently enlarges the centered lettering up to 1.8 times its initial size, then
 blends the mask away to reveal the full frame. A short scroll-follow easing keeps
 the transition smooth; the same video keeps playing throughout. Reduced-motion preferences receive
 a static full-frame presentation with the playback control.
+The cinematic title uses the bundled Anton font under its [SIL Open Font License](app/fonts/OFL-Anton.txt).
+The pinned sequence spans 480svh on desktop and 420svh on phones; the reveal
+finishes at 80% of that scroll travel so the transition has time to unfold.
 The background showcase plays the complete user-supplied `Andrewww.mp4`, served
 unchanged as `public/andrewww-original.mp4` on desktop and mobile. Its original
 1920×978 resolution, 60 fps video, audio, and bitrate are preserved. The player
