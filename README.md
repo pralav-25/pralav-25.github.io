@@ -42,7 +42,7 @@ merged on 28 October 2026.
 
 ## Local development
 
-Requires Node.js 22+ and pnpm.
+Requires Node.js 22.13+ within the Node 22 release line and pnpm. Tests use Node's built-in TypeScript stripping.
 
 ```bash
 pnpm install
@@ -114,7 +114,9 @@ returns focus to Play; Escape also closes a player when focus is on the page.
 Each sample includes a direct platform link in case third-party embeds fail.
 Players remain click-to-load and only one runs at a time.
 
-Run `pnpm typecheck`, `pnpm lint`, and `pnpm build` before submitting changes.
+Run `pnpm test`, `pnpm typecheck`, `pnpm lint`, and `pnpm build` before submitting changes.
+
+`components/scroll-motion.tsx` mounts the lifecycle in `lib/scroll-motion.ts`. The lifecycle observes changes to the system's reduced-motion preference while the page is open. Switching to reduced motion reveals the content, resets scroll transforms, and restores a hidden header; all listeners, observers, timers and styles are cleaned up before restarting or unmounting.
 
 The background reel has a visible play/pause control, pauses in hidden tabs, and
 starts paused for reduced-motion preferences. Selecting play is an explicit

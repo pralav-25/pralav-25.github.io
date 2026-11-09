@@ -36,5 +36,8 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Motion lifecycle tests
+        run: pnpm test
+
       - name: Build
         run: pnpm build
