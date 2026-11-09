@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "engines": {
-    "node": "22.x"
+    "node": ">=22.13.0 <23"
   },
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "oxlint",
     "format": "oxfmt",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs"
   },
   "dependencies": {
     "clsx": "2.1.1",
