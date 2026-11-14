@@ -159,6 +159,7 @@ function LinkedInIcon() {
 export default function Home() {
   return (
     <main>
+      <a className="skip-link" href="#project-details">Skip to project details</a>
       <ScrollMotion />
       <section className="hero" id="top" aria-labelledby="hero-title">
         <header className="site-header">
@@ -245,7 +246,7 @@ export default function Home() {
           href: project.featured ? '#shiftwatch' : `#${projectId(project.name)}`,
         }))} />
 
-        <div className="project-grid">
+        <div className="project-grid" id="project-details" tabIndex={-1}>
           {projects.map((project) => (
             <article className={`project-card${project.featured ? ' project-featured' : ''}`} key={project.name} id={project.featured ? 'shiftwatch' : projectId(project.name)}>
               <span className="project-sticker" aria-hidden="true">{projectNotes[project.name]}</span>
